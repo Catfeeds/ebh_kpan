@@ -1,0 +1,101 @@
+.ztree{
+	@height:24px;
+	margin:0px;padding: 10px 0px;font-size:1em;
+	li {
+		padding:0; margin:0; list-style:none;text-align:left;
+		white-space:nowrap; outline:0;
+		ul{margin:0; padding:0;}
+		&.level0{
+			margin-bottom:4px;
+			&>span.tree_icon{width:20px;}
+		}
+		span{
+			line-height:@height;
+			&.button{
+				line-height:0; margin:0;display: inline-block; vertical-align:middle;
+				cursor: pointer;outline:none;background-color:transparent; background-repeat:no-repeat;
+				height:@height;width:@height - 4;margin-right:5px;
+				&.switch {
+					width:25px;height:25px;margin-right:0px;background: none;
+					text-align:center;line-height:25px;
+					&:hover{background:rgba(0,0,0,0.03);};
+					&:after {
+						content: "\f0da";
+						font-family: FontAwesome;color: #aaa;
+						text-decoration: inherit;
+						font-size:1.25em;line-height:16px;padding-left: 6px;
+						-webkit-font-smoothing: antialiased;
+					}
+					&.noline_docu:after {content:' ';}
+					&.noline_open,&.noline_open_hover{
+						&:after{content:"\f0d7";}
+					}
+					&.switch_hover:after{color:@file_select_color;}
+				}
+				&.ico_loading{
+					background:url("@{img_common}loading_tree.gif") no-repeat 0 0px transparent !important;
+					.x-item-file{display:none;}
+				}
+			}
+		}
+
+		span.tree_icon{
+			height:21px;width:21px;background:none;overflow:hidden;
+			img{width:100%;max-width:100%;max-height:100%}
+		}
+		a{ padding-top:0px;cursor:pointer;text-decoration:none;
+			display:block;margin:0;color:#333; vertical-align:top;line-height:@height;
+			height:@height;padding-left:10px;border:1px solid @tree_background;
+			&:hover{text-decoration:none;
+				.transition(all 0.3s);background:@file_hover_color;
+				height:@height;border:1px solid @file_hover_color;
+			}
+			&.curSelectedNode,&.curDropTreeNode{
+				border:1px solid @file_select_color;background:@file_select_color;
+				line-height:@height;height:@height;color:#fff;
+				.button.switch:after{color:#fff !important;}
+			}
+			&.curDropTreeNode{box-shadow: 0 0 0 1px #fff inset !important;}
+			&.curSelectedNode_Edit {
+				border:1px solid @file_select_color;background:@file_select_color;
+				color:black; height:@height;
+			}
+			input.rename {
+				height:@height + 1;line-height:@height;padding:0;margin:0;
+				border:none;outline:none;margin-left: -3px;padding-left:3px;width:106px;
+				position: absolute;margin-top:-1px;
+			}
+			span.button{
+				&.root_docu,&.noline_docu{ background:none;}
+			}
+		}
+	}
+}
+
+ul.tmpTargetzTree {}/*移植根目录选择器*/
+ul.ztree.zTreeDragUL {
+	margin:0; padding:0; position:absolute;width:auto; height:auto;
+	background-color:@file_select_color; border:1px solid @file_select_color;.opacity(0.5);
+	li a span.space{display: none !important;}
+	li a{padding: 4px 10px 0 10px;color:#fff;}
+	li span.button.switch{display: none;}
+}
+
+.ztree li a.tmpTargetNode_inner {background:darken(@file_select_color,20%);border:1px solid darken(@file_select_color,10%); color:#fff;}
+.ztree li a.tmpTargetNode_prev {border-bottom: 1px solid #f96;}
+.ztree li a.tmpTargetNode_next {border-bottom: 1px solid #f96;}
+span.tmpzTreeMove_arrow {display: inline-block;margin:4px 0 0 2px;position:absolute;
+	  border-color: transparent  transparent transparent #fff;
+	  border-style: solid;border-width: 7px 0px 7px 7px;width: 0;height: 0;
+	  _border-top-color: white;_border-bottom-color: white;_filter: chroma( color =white);
+}
+
+
+.frame-left .ztree li .file{
+	line-height: 0;margin: 0;display: inline-block;
+	vertical-align: middle;cursor: pointer;
+	outline: none;background-color: transparent;
+	background-repeat: no-repeat;
+	height: 22px;width: 18px;
+	margin-right: 5px;
+}

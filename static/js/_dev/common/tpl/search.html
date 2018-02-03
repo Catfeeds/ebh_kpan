@@ -1,0 +1,22 @@
+<div class='do_search'>
+	<div class='search_header'>
+		<div class='s_br'>
+			<input type='text' id='search_value'/><button class="btn btn-default btn-sm btn-right"><i class="font-icon icon-search"></i></button>
+			<div style='float:right'>{{LNG.path}}:<input type='text' id='search_path' title="" title-data="#search_path" title-timeout="100"/></div>
+		</div>
+		<div class='s_br'>
+			<input type='checkbox' id='search_is_content' class="kui-checkbox size-small"/>
+			<label for='search_is_content'>{{LNG.search_content}}</label>
+			<input type='checkbox' id='search_is_case' class="kui-checkbox size-small"/>
+			<label for='search_is_case'>{{LNG.search_uplow}}</label>
+			<div style='float:right'>
+				{{LNG.file_type}}:<input type='text' id='search_ext' title='{{LNG.search_ext_tips}}' title-timeout="100"/>
+			</div>
+		</div>
+	</div>
+	<div class="search_desc"></div>
+	<div class='search_result'>
+		<ul class="file-items"></ul>
+	</div>
+</div>
+

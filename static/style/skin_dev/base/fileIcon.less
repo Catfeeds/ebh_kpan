@@ -1,0 +1,273 @@
+.background-image-set(@path:"",@image:"") {
+	background-image:url("../../../images/file_icon/@{path}/@{image}");
+	
+	@theImage:"static/images/file_icon/@{path}/@{image}?ver=3.30";
+	background-image:none~'\9';
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{theImage}',sizingMethod='scale');
+	-ms-filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{theImage}',sizingMethod='scale');
+}
+.x-item-small{
+	position: relative;
+	width: 18px;height: 18px;
+	margin-right: 4px;
+	background-size: 100% auto;
+	vertical-align: middle;
+}
+.x-item-file{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	.background-image-set("icon_file","file.png");
+	width:100%;
+	height:100%;
+	display: inline-block;
+	pointer-events: none;
+	&.small{
+		width:20px;height:20px;
+	}
+}
+.fileList_icon .file .ico .x-item-file{
+	border-radius: 5px;margin-top: 6px;margin-top:4px;
+}
+.bindary_box .ico .x-item-file{
+	width: 90px;height: 90px;
+	margin-top: 28px;
+}
+
+/* 文件列表(含拖拽)；树目录；地址栏；任务栏icon(含拖拽)；dialog标题栏；编辑器tab(含拖拽)；分享页面文件icon；搜索结果；*/
+.fileList_list .file .ico .x-item-file,.fileList_list_split .file .ico .x-item-file{border: none;}
+.ztree li span.tree_icon .x-item-file{.x-item-small();}
+.header-content #yarnball .x-item-file{.x-item-small();}
+.task_tab .tabs .tab .x-item-file,.task_tab .tabs .tab img{.x-item-small();}
+.tasktab-dragging.tab .x-item-file{.x-item-small();}
+.tasktab-dragging.tab img{.x-item-small();}
+.aui_title .x-item-file{.x-item-small();}
+.edit_tab .tabs .tab .name .x-item-file{.x-item-small();}
+.draggable-dragging .name .x-item-file{.x-item-small();}
+.do_search .search_result .file-item .file-info .file-icon .x-item-file{.x-item-small();}
+.context-menu-list .context-menu-item .font-icon.x-item-file{
+	.x-item-small();
+	margin-right: 8px;
+	&:before{content:"";}
+}
+
+
+.x-txt,.x-textile,.x-inc,.x-log{
+	&.small{
+		.background-image-set("icon_file","txt_small.png");
+		background-size: auto;
+	}
+}
+.x-php{
+	&.small{
+		.background-image-set("icon_file","php_small.png");
+		background-size: auto;
+	}
+}
+
+.x-txt,.x-textile,.x-oexe,.x-inc,.x-csv,.x-log,.x-asc,.x-tsv,.x-lnk,.x-url,.x-webloc,.x-meta,.x-localized,.x-xib,.x-xsd,.x-storyboard,.x-plist,.x-csproj,.x-pch,.x-pbxproj,.x-local,.x-xcscheme,.x-manifest,.x-vbproj,.x-strings,.x-jshintrc,.x-sublime-project,.x-readme,.x-changes,.x-changelog,.x-version,.x-license,.x-changelog,.x-abap,.x-abc,.x-as,.x-asp,.x-aspx,.x-ada,.x-adb,.x-htaccess,.x-htgroups,.x-htgroups,.x-htpasswd,.x-asciidoc,.x-adoc,.x-asm,.x-a,.x-ahk,.x-bat,.x-cmd,.x-cpp,.x-c,.x-cc,.x-cxx,.x-h,.x-hh,.x-hpp,.x-ino,.x-c9search_results,.x-cirru,.x-cr,.x-clj,.x-cljs,.x-cbl,.x-cob,.x-coffee,.x-cf,.x-cson,.x-cakefile,.x-cfm,.x-cs,.x-css,.x-curly,.x-d,.x-di,.x-dart,.x-diff,.x-patch,.x-dockerfile,.x-dot,.x-dummy,.x-dummy,.x-e,.x-ge,.x-ejs,.x-ex,.x-exs,.x-elm,.x-erl,.x-hrl,.x-frt,.x-fs,.x-ldr,.x-ftl,.x-gcode,.x-feature,.x-.gitignore,.x-glsl,.x-frag,.x-vert,.x-gbs,.x-go,.x-groovy,.x-haml,.x-hbs,.x-handlebars,.x-tpl,.x-mustache,.x-hs,.x-hx,.x-html,.x-hta,.x-htm,.x-xhtml,.x-eex,.x-html.eex,.x-erb,.x-rhtml,.x-html.erb,.x-ini,.x-inf,.x-conf,.x-cfg,.x-prefs,.x-io,.x-jack,.x-jade,.x-java,.x-ji,.x-jl,.x-jq,.x-js,.x-jsm,.x-json,.x-jsp,.x-jsx,.x-latex,.x-ltx,.x-bib,.x-lean,.x-hlean,.x-less,.x-liquid,.x-lisp,.x-ls,.x-logic,.x-lql,.x-lsl,.x-lua,.x-lp,.x-lucene,.x-Makefile,.x-makemakefile,.x-gnumakefile,.x-makefile,.x-ocamlmakefile,.x-make,.x-md,.x-markdown,.x-mask,.x-matlab,.x-mz,.x-mel,.x-mc,.x-mush,.x-mysql,.x-nix,.x-nsi,.x-nsh,.x-m,.x-mm,.x-ml,.x-mli,.x-pas,.x-p,.x-pl,.x-pm,.x-pgsql,.x-php,.x-phtml,.x-shtml,.x-php3,.x-php4,.x-php5,.x-phps,.x-phpt,.x-aw,.x-ctp,.x-module,.x-ps1,.x-praat,.x-praatscript,.x-psc,.x-proc,.x-plg,.x-prolog,.x-properties,.x-proto,.x-py,.x-r,.x-cshtml,.x-rd,.x-rhtml,.x-rst,.x-rb,.x-ru,.x-gemspec,.x-rake,.x-guardfile,.x-rakefile,.x-gemfile,.x-rs,.x-sass,.x-scad,.x-scala,.x-scm,.x-sm,.x-rkt,.x-oak,.x-scheme,.x-scss,.x-sh,.x-bash,.x-bashrc,.x-sjs,.x-smarty,.x-tpl,.x-snippets,.x-soy,.x-space,.x-sql,.x-sqlserver,.x-styl,.x-stylus,.x-svg,.x-swift,.x-tcl,.x-tex,.x-toml,.x-twig,.x-swig,.x-ts,.x-typescript,.x-str,.x-vala,.x-vbs,.x-vb,.x-vm,.x-v,.x-vh,.x-sv,.x-svh,.x-vhd,.x-vhdl,.x-wlk,.x-wpgm,.x-wtest,.x-xml,.x-rdf,.x-rss,.x-wsdl,.x-xslt,.x-atom,.x-mathml,.x-mml,.x-xul,.x-xbl,.x-xaml,.x-xq,.x-yaml,.x-yml,.x-cer,.x-reg,.x-config,.x-srt,.x-ass{
+	.background-image-set("icon_file","txt.png");
+}
+.x-pl,.x-pm,.x-cgi,.x-as,.x-asm,.x-clj,.x-cbl,.x-cfm,.x-d,.x-diff,.x-dot,.x-ejs,.x-erl,.x-ftl,.x-go,.x-hs,.x-vbs,.x-haml,.x-erb,.x-jade,.x-json,.x-jq,.x-jsx,.x-ji,.x-tex,.x-lisp,.x-ls,.x-lsl,.x-lua,.x-lp,.x-matlab,.x-mel,.x-r,.x-yaml,.x-yml{
+	.background-image-set("icon_file","code.png");
+}
+.x-bin,.x-hex,.x-zip,.x-pdf,.x-swf,.x-gzip,.x-rar,.x-arj,.x-tar,.x-gz,.x-cab,.x-tbz,.x-tbz2,.x-lzh,.x-uue,.x-bz2,.x-ace,.x-exe,.x-so,.x-dll,.x-chm,.x-rtf,.x-odp,.x-odt,.x-pages,.x-class,.x-psd,.x-ttf,.x-fla,.x-dmg,.x-dat,.x-ipa,.x-lib,.x-a,.x-apk,.x-so,.x-o{
+	.background-image-set("icon_file","bin.png");
+}
+.x-music,.x-mp3,.x-wma,.x-mp2,.x-mid,.x-aac,.x-ogg,.x-oga,.x-webma,.x-wav,.x-m4a,
+.x-m3u,.x-m4a,.x-midi,.x-mid,.x-flac,.x-alac,.x-ape,.x-ac3,{
+	.background-image-set("icon_file","music.png");}
+.x-avi,.x-rm,.x-rmvb,.x-mpg,.x-mkv,.x-wmv,.x-mov,.x-mp4,.x-evo,.x-divx,.x-3gp,.x-asf,.x-ogv,.x-webmv,
+.x-cue,.x-hd,.x-hdmov,.x-mov,.x-mp4v,.x-mpeg,.x-ogm,.x-qt,.x-spx,.x-vob,.x-wmv,.x-xvid,.x-webm,.x-m4v,
+.x-mts,.x-mpe,.x-m2ts,.x-mpv,.x-cue,{
+	.background-image-set("icon_file","movie.png");
+}
+.x-flv,.x-f4v{.background-image-set("icon_file","flv.png");}
+.x-html,.x-htm,.x-url,.x-tpl,.x-lnk,.x-haml,.x-shtml,.x-webloc,.x-hta,.x-xhtml{
+	.background-image-set("icon_file","html.png");}
+
+.x-css,.x-less,.x-sass{.background-image-set("icon_file","css.png");}
+.x-js,.x-coffee,.x-jsx{.background-image-set("icon_file","js.png");}
+.x-xml,.x-config,.x-manifest,.x-xaml,.x-csproj,.x-vbproj{.background-image-set("icon_file","xml.png");}
+.x-cs,.x-asp,.x-aspx{.background-image-set("icon_file","cs.png");}
+.x-java,.x-jsp{.background-image-set("icon_file","java.png");}
+.x-mm,.x-cc,.x-cxx,.x-cpp,.x-c,.x-m{.background-image-set("icon_file","cpp.png");}
+.x-h,.x-hpp,.x-hh,.x-pch{.background-image-set("icon_file","h.png");}
+.x-png,.x-jpg,.x-jpeg,.x-bmp,.x-gif,.x-picture,
+.x-ico,.x-svg,.x-cur,.x-webp,.x-tif,.x-tiff{
+	.background-image-set("icon_file","jpg.png");
+}
+
+.x-make,.x-Makefile,.x-makefile,.x-GNUmakefile,.x-OCamlMakefile,.x-makemakefile{
+	.background-image-set("icon_file","makefile.png");}
+.x-iso,.x-vcd{.background-image-set("icon_file","iso.png");}
+.x-pkg,.x-package,.x-framework{.background-image-set("icon_file","pkg.png");}
+.x-zip,.x-apk,.x-tar,.x-gzip,.x-tgz,.x-jar,.x-cxr,.x-tar,.x-gz,.x-cab,.x-7z{.background-image-set("icon_file","zip.png");}
+.x-exe,.x-bin,.x-class,.x-a,.x-so{.background-image-set("icon_file","exe.png");}
+.x-ttf,.x-otf,.x-eot,.x-woff,.x-tiff,.x-ttc{.background-image-set("icon_file","font.png");}
+.x-bat,.x-cmd,.x-sh,.x-bash,.x-bashrc{.background-image-set("icon_file","cmd.png");}
+.x-ini,.x-inf,.x-conf,.x-meta,.x-gitignore,.x-plist,.x-htaccess,.x-localized,.x-xcscheme,.x-storyboard,.x-xib,.x-strings,.x-pbxproj{
+	.background-image-set("icon_file","ini.png");}
+.x-md,.x-markdown{.background-image-set("icon_file","md.png");}
+
+
+.x-file{.background-image-set("icon_file","file.png");}
+.x-accdb{.background-image-set("icon_file","accdb.png");}
+.x-ai{.background-image-set("icon_file","ai.png");}
+.x-air{.background-image-set("icon_file","air.png");}
+.x-arj{.background-image-set("icon_file","arj.png");}
+.x-apk{.background-image-set("icon_file","apk.png");}
+.x-as{.background-image-set("icon_file","as.png");}
+.x-ascx{.background-image-set("icon_file","ascx.png");}
+.x-ashx{.background-image-set("icon_file","ashx.png");}
+.x-asmx{.background-image-set("icon_file","asmx.png");}
+.x-aspx{.background-image-set("icon_file","aspx.png");}
+.x-bz2{.background-image-set("icon_file","bz2.png");}
+.x-cdr{.background-image-set("icon_file","cdr.png");}
+.x-cer{.background-image-set("icon_file","cer.png");}
+.x-chm{.background-image-set("icon_file","chm.png");}
+.x-cmd{.background-image-set("icon_file","cmd.png");}
+.x-c{.background-image-set("icon_file","c.png");}
+.x-cpp{.background-image-set("icon_file","cpp.png");}
+.x-cs{.background-image-set("icon_file","cs.png");}
+.x-cshtml{.background-image-set("icon_file","cshtml.png");}
+.x-csproj{.background-image-set("icon_file","csproj.png");}
+.x-css{.background-image-set("icon_file","css.png");}
+.x-csv{.background-image-set("icon_file","csv.png");}
+.x-dll{.background-image-set("icon_file","dll.png");}
+.x-dmg,.x-img{.background-image-set("icon_file","dmg.png");}
+.x-doc{.background-image-set("icon_file","doc.png");}
+.x-docm{.background-image-set("icon_file","docm.png");}
+.x-docx{.background-image-set("icon_file","docx.png");}
+.x-dot{.background-image-set("icon_file","dot.png");}
+.x-dotm{.background-image-set("icon_file","dotm.png");}
+.x-dotx{.background-image-set("icon_file","dotx.png");}
+.x-dtd{.background-image-set("icon_file","dtd.png");}
+.x-dwg{.background-image-set("icon_file","dwg.png");}
+.x-dxf{.background-image-set("icon_file","dxf.png");}
+.x-eps{.background-image-set("icon_file","eps.png");}
+.x-epub{.background-image-set("icon_file","epub.png");}
+.x-exe{.background-image-set("icon_file","exe.png");}
+.x-f{.background-image-set("icon_file","f.png");}
+.x-file{.background-image-set("icon_file","file.png");}
+.x-fla{.background-image-set("icon_file","fla.png");}
+.x-font{.background-image-set("icon_file","font.png");}
+.x-gif{.background-image-set("icon_file","gif.png");}
+.x-gz{.background-image-set("icon_file","gz.png");}
+.x-h{.background-image-set("icon_file","h.png");}
+.x-hlp{.background-image-set("icon_file","hlp.png");}
+.x-html{.background-image-set("icon_file","html.png");}
+.x-indd{.background-image-set("icon_file","indd.png");}
+.x-ini{.background-image-set("icon_file","ini.png");}
+.x-ipa{.background-image-set("icon_file","ipa.png");}
+.x-jar{.background-image-set("icon_file","jar.png");}
+.x-java{.background-image-set("icon_file","java.png");}
+.x-jpg{.background-image-set("icon_file","jpg.png");}
+.x-js{.background-image-set("icon_file","js.png");}
+.x-json{.background-image-set("icon_file","json.png");}
+.x-key{.background-image-set("icon_file","key.png");}
+.x-ldf{.background-image-set("icon_file","ldf.png");}
+.x-lnk{.background-image-set("icon_file","lnk.png");}
+.x-makefile{.background-image-set("icon_file","makefile.png");}
+.x-mdb{.background-image-set("icon_file","mdb.png");}
+.x-mdf{.background-image-set("icon_file","mdf.png");}
+.x-mht{.background-image-set("icon_file","mht.png");}
+.x-midi{.background-image-set("icon_file","midi.png");}
+.x-mpp{.background-image-set("icon_file","mpp.png");}
+.x-mpt{.background-image-set("icon_file","mpt.png");}
+.x-msg{.background-image-set("icon_file","msg.png");}
+.x-msi{.background-image-set("icon_file","msi.png");}
+.x-numbers{.background-image-set("icon_file","numbers.png");}
+.x-odp{.background-image-set("icon_file","odp.png");}
+.x-ods{.background-image-set("icon_file","ods.png");}
+.x-odt{.background-image-set("icon_file","odt.png");}
+.x-oexe{.background-image-set("icon_file","oexe.png");}
+.x-oexe2{.background-image-set("icon_file","oexe2.png");}
+.x-ogg{.background-image-set("icon_file","ogg.png");}
+.x-pages{.background-image-set("icon_file","pages.png");}
+.x-pdb{.background-image-set("icon_file","pdb.png");}
+.x-pdf{.background-image-set("icon_file","pdf.png");}
+.x-php{.background-image-set("icon_file","php.png");}
+.x-pkg{.background-image-set("icon_file","pkg.png");}
+.x-pl{.background-image-set("icon_file","pl.png");}
+.x-png{.background-image-set("icon_file","png.png");}
+.x-pps{.background-image-set("icon_file","pps.png");}
+.x-ppsx{.background-image-set("icon_file","ppsx.png");}
+.x-ppt{.background-image-set("icon_file","ppt.png");}
+.x-pptx{.background-image-set("icon_file","pptx.png");}
+.x-prproj{.background-image-set("icon_file","prproj.png");}
+.x-ps1{.background-image-set("icon_file","ps1.png");}
+.x-psd{.background-image-set("icon_file","psd.png");}
+.x-pspimage{.background-image-set("icon_file","pspimage.png");}
+.x-pst{.background-image-set("icon_file","pst.png");}
+.x-pub{.background-image-set("icon_file","pub.png");}
+.x-py{.background-image-set("icon_file","py.png");}
+.x-rar{.background-image-set("icon_file","rar.png");}
+.x-rb{.background-image-set("icon_file","rb.png");}
+.x-reg{.background-image-set("icon_file","reg.png");}
+.x-resx{.background-image-set("icon_file","resx.png");}
+.x-rtf{.background-image-set("icon_file","rtf.png");}
+.x-sitx{.background-image-set("icon_file","sitx.png");}
+.x-sln{.background-image-set("icon_file","sln.png");}
+.x-sql{.background-image-set("icon_file","sql.png");}
+.x-suo{.background-image-set("icon_file","suo.png");}
+.x-svg{.background-image-set("icon_file","svg.png");}
+.x-swf{.background-image-set("icon_file","swf.png");}
+.x-tar{.background-image-set("icon_file","tar.png");}
+.x-txt{.background-image-set("icon_file","txt.png");}
+.x-vb{.background-image-set("icon_file","vb.png");}
+.x-vbproj{.background-image-set("icon_file","vbproj.png");}
+.x-vbs{.background-image-set("icon_file","vbs.png");}
+.x-vcf{.background-image-set("icon_file","vcf.png");}
+.x-vcproj{.background-image-set("icon_file","vcproj.png");}
+.x-vcxproj{.background-image-set("icon_file","vcxproj.png");}
+.x-vdw{.background-image-set("icon_file","vdw.png");}
+.x-vdx{.background-image-set("icon_file","vdx.png");}
+.x-vsd{.background-image-set("icon_file","vsd.png");}
+.x-vsdx{.background-image-set("icon_file","vsdx.png");}
+.x-vss{.background-image-set("icon_file","vss.png");}
+.x-vst{.background-image-set("icon_file","vst.png");}
+.x-vsx{.background-image-set("icon_file","vsx.png");}
+.x-vtx{.background-image-set("icon_file","vtx.png");}
+.x-xaml{.background-image-set("icon_file","xaml.png");}
+.x-xap{.background-image-set("icon_file","xap.png");}
+.x-xls{.background-image-set("icon_file","xls.png");}
+.x-xlsb{.background-image-set("icon_file","xlsb.png");}
+.x-xlsm{.background-image-set("icon_file","xlsm.png");}
+.x-xlsx{.background-image-set("icon_file","xlsx.png");}
+.x-xlt{.background-image-set("icon_file","xlt.png");}
+.x-xltx{.background-image-set("icon_file","xltx.png");}
+.x-xml{.background-image-set("icon_file","xml.png");}
+.x-xps{.background-image-set("icon_file","xps.png");}
+.x-xsd{.background-image-set("icon_file","xsd.png");}
+.x-xsl{.background-image-set("icon_file","xsl.png");}
+.x-y{.background-image-set("icon_file","y.png");}
+.x-zip{.background-image-set("icon_file","zip.png");}
+
+/* icon_others */
+.x-folder{.background-image-set("icon_others","folder.png");}
+.x-folder_share{.background-image-set("icon_others","folder_public.png");}
+.x-recycle{.background-image-set("icon_others","recycle.png");}
+.x-recycle_full{.background-image-set("icon_others","recycle_full.png");}
+.x-path_self_share{.background-image-set("icon_others","path_self_public.png");}
+.x-app_link{.background-image-set("icon_others","app_link.png");}
+.x-user{.background-image-set("icon_others","user.png");}
+.x-userSelf{.background-image-set("icon_others","userSelf.png");}
+.x-share{.background-image-set("icon_others","share.png");}
+.x-groupSelf{.background-image-set("icon_others","groupSelf.png");}
+.x-groupSelfOwner{.background-image-set("icon_others","groupSelfOwner.png");}
+.x-groupGuest{.background-image-set("icon_others","groupGuest.png");}
+.x-groupSelfRoot{.background-image-set("icon_others","groupSelfRoot.png");}
+.x-groupRoot{.background-image-set("icon_others","groupRoot.png");}
+.x-groupPublic{.background-image-set("icon_others","folder_public.png");}
+.x-treeSelf{.background-image-set("icon_others","computer.png");}
+.x-computer{.background-image-set("icon_others","computer.png");}
+.x-treeFav{.background-image-set("icon_others","treeFav.png");}
+.x-edit{.background-image-set("icon_others","edit.png");}
+.x-search{.background-image-set("icon_others","search.png");}
+.x-upload{.background-image-set("icon_others","upload.png");}
+.x-setting{.background-image-set("icon_others","setting.png");}
+.x-appStore{.background-image-set("icon_others","appStore.png");}
+.x-error{.background-image-set("icon_others","error.png");}
+.x-info{.background-image-set("icon_others","info.png");}
+

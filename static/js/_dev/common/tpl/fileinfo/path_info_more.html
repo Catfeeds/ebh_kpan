@@ -1,0 +1,29 @@
+<div class='pathinfo'>
+	<div class='p' style='line-height:40px;'>
+		<div class='title'>{{LNG.info}}:</div>
+		<div class='content'>
+			{{file_num}}  {{LNG.file}},{{folder_num}}  {{LNG.folder}}</div>
+		<div style='clear:both'></div>
+	</div>
+	<div class='line'></div>
+	<div class='p'>
+		<div class='title'>{{LNG.size}}:</div>
+		<div class='content'>{{size_friendly}} ({{size}} Byte)</div>
+		<div style='clear:both'></div>
+	</div>
+	
+	<div class='line'></div>
+	<div class='p'>
+		<div class='title'>{{LNG.permission}}:</div>
+		<div class='content'>{{mode}}</div>
+		<div style='clear:both'></div>
+	</div>
+	{{if is_root=="1"}}
+	<!--<div class='p'>
+		<div class='title'>{{LNG.permission_edit}}:</div>
+		<div class='content'><input type='text' class='info_chmod' value='755'/>
+		<button class='btn btn-default btn-sm edit_chmod' type='button'>{{LNG.button_save}}</button></div>
+		<div style='clear:both'></div>
+	</div>-->
+	{{/if}}
+</div>

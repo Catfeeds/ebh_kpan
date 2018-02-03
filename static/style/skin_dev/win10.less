@@ -1,0 +1,271 @@
+@import "./base/base.less";
+@main_color_deep:#62a2e4;
+@main_color:#eee;
+body{
+	.background-image-set(@path:"",@image:"") {
+		background-image:url("../../images/file_icon/@{path}/@{image}");
+		@theImage:"static/images/file_icon/@{path}/@{image}";
+		background-image:none~'\9';
+		filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{theImage}',sizingMethod='scale');
+		-ms-filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{theImage}',sizingMethod='scale');
+	}
+	.x-folder{
+		.background-image-set("icon_others","folder_win10.png");
+		&.small{
+			.background-image-set("icon_others","folder_win10_small.png");
+			height: 18px !important;width: 18px !important;
+		}
+	}
+	position: absolute;top: 0px;left: 0px;bottom: 0px;right: 0px;
+	.btn.btn-default{
+		border-radius: 0px;
+		background:#fff;border-color: #ddd;
+		&:focus,&:hover{background-color: #e4f8ff;border-color: #aedaff;}
+		&:active,&.active{color: #365f80;background-color: #e4f8ff;border-color: #93cfff;}
+	}
+	.dropdown-menu{
+		border-radius:0px;
+		a:hover,.this a{
+			background:@main_color;
+			color:#444;
+		}
+	}
+
+	.topbar{
+		background:#fff;border-top: 1px solid #eee;
+		.content{
+			border-bottom:1px solid #eee;
+			.topbar_menu{border-color:#eee;color:#666;}
+			.share_title,.share_info,.share_info .time{color:#666;}
+			.top_right div.share_info_user{color:#666;}
+			.open .topbar_menu,.topbar_menu:hover,.topbar_menu.this,.top_right ul a.this{
+				background:@main_color;border-color:@main_color;color:#666;
+			}
+		}
+	}
+
+	.aui_outer{
+		@main_color:#eee;
+		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+		border: 1px solid #bbb;border-color:rgba(0,0,0,0.2);
+		.aui_title{background:#fff;color:#666;border-bottom:1px solid #f1f1f1;}
+		.aui_title{border-bottom: none;}
+		.aui_buttons{
+			border-top: solid 1px #eee;background: #f8f8f8;
+			button{
+				padding:1px 1.5em;border: 1px solid #ccc;
+				color:#222;background:@main_color;
+				&:hover{background:lighten(@main_color,5%);}
+				&:active{background:darken(@main_color,5%);}
+			}
+		}
+		.aui_buttons button.aui_state_highlight{
+			// #2285d4
+			border-color:#96c7ff;box-shadow:0 0 2px #96c7ff;
+			&:hover{color:#111;}
+			&:active{color:#111;}
+		}
+
+		.aui_min{
+			right:80px;
+			background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAEUlEQVQYV2NgGGbgP5F40AMAIN0J96UZJscAAAAASUVORK5CYII=");
+		}
+		.aui_max{
+			right:40px;
+			background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGD4TySGEATAqELiFBLEAISgI91xKgmgAAAAAElFTkSuQmCC");
+		}
+		.aui_close{
+			right:0px;
+			background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOUlEQVQYlWNgYGD4D8TGDLiBMVQNgzErOwcuxRhy2BTjNABZAp8tCMWEFBGtkCirifIM0cFDVIADAOrvG43QTSHZAAAAAElFTkSuQmCC");
+		}
+		.aui_min, .aui_max, .aui_close{
+			color:#888;background-position: center center;
+			background-color:transparent;
+			background-repeat: no-repeat;
+			height: 31px;width:40px;line-height: 31px;
+			.transition(background 0.2s);
+			&:before{content:"";}
+			&:hover,&:active{color:#333;background-color:#ddd;}
+		}
+		.aui_close:hover{
+			background-color:#e81123;color:#fff;
+			background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOklEQVQYV2P4/+//+f/fv6cw4AAgOZAaCAMEsCjGkMOmGKcByBL4bEFVjE8R0QqJspoozxAdPMQGOABXELkNcbMs5wAAAABJRU5ErkJggg==")
+		}
+	}
+	.aui_state_focus{
+		.aui_outer{
+			box-shadow: 0px 0px 20px rgba(0, 140, 255, 0.46);
+			border:1px solid #71b9f3;
+		}
+	}
+	.copyright_dialog.dialog-simple .aui_close, 
+	.share_dialog.dialog-simple .aui_close, 
+	.check_version_dialog.dialog-simple .aui_close{
+		opacity:0.6;background:rgba(0,0,0,0.4);
+		&:before{content:"\f00d";background-image:none;}
+		&:hover{background-image:none;}
+	}
+	div.dialog-simple{
+		.aui_title{border-radius: 0;}
+		.aui_min, .aui_max, .aui_close{
+			background-color: rgba(255,255,255,0.8);border-radius: 0;
+			&:hover,&:active{background-color: rgba(255,255,255,0.95);}
+		}
+		.aui_close{
+			right: 4px;
+			&:hover,&:active{background-color:#e81123;}
+		}
+	}
+
+
+	.do_search .search_desc,{
+		border-radius:0;background: #fefefe;border-bottom-color:#eee;
+	}
+	.do_search .search_result{border-radius:0;}
+	#selContainer{/*选择框*/
+		border:1px solid darken(@main_color_deep,30%);
+		background-color:@main_color_deep;
+	}
+
+	.header-middle,.frame-header .header-content .header-right{
+		.btn-left-radius,.btn-right-radius{border-radius:0;}
+	}
+	.frame-main .frame-left{
+		background: #fff;
+		border-right: 1px solid #eee;
+		.ztree li a{
+			margin: 0 2px;border-color:transparent;
+			&:hover{.file_hover();}
+			&.curSelectedNode,&.curSelectedNode:hover,&.curDropTreeNode{
+				.file_select();
+				.button.switch:after{color:inherit !important;}
+			}
+			span.button.switch{
+				&:after{content:"\f105";font-size: 16px;}
+				&.noline_open:after,&.noline_open_hover:after{content:"\f107";font-weight: 800;color:#76bdf7;}
+				&.noline_docu:after{content:"";.opacity(0);}
+			}
+		}
+	}
+
+	//文件列表
+	.file_select{
+		.transition(transform 0.2s);background:#cce8ff;border-color:#99d1ff;border-radius:0px;filter:none;color:#335;
+		/*border-color:transparent;box-shadow: 0 0 0 1px #99d1ff;*/
+	}
+	.file_hover{
+		.transition(transform 0.2s);background:#e5f3ff;border-color:transparent;border-radius:0px;
+		border-color:transparent;border-radius:0;filter:none;color:#335;
+	}
+	div.fileContiner{
+		&.fileList_list_split .file{
+			&.file2{background:none;}
+			&.select_split_parent{background: #e3f0ff;}
+			&.hover{.file_hover();}
+		}
+		.file{
+			.transition(transform 0.2s);
+			&.file2 {background:#fffbf1;}
+			&.select,&.selectDragTemp{.file_select();}
+			&.hover{
+				.file_hover();
+				&.select,&.selectDragTemp{.file_select();}
+			}
+			&.select.file2,&.selectDragTemp.file2{.file_select();}
+		}
+		&.fileList_list_split,&.fileList_list{
+			.file{margin-bottom:1px;}
+		}
+	}
+
+	#main_title .filename:hover,
+	#main_title .filesize:hover, 
+	#main_title .filetype:hover, 
+	#main_title .filetime:hover,
+	#main_title .this{
+		background:#e5f3ff;
+	}
+
+	//right_menu
+	.context-menu-list{
+		box-shadow:4px 5px 10px rgba(0, 0, 0, 0.2);border-radius: 0;
+		border: 1px solid rgba(0,0,0,0.1);
+		background-clip: padding-box;
+		.context-menu-item{
+			line-height: 25px;height: 25px;padding: 0 15px 0 20px;
+			&.hover,&.selected.hover{
+				background:darken(@main_color,5%);color:#444;
+				.font-icon{color:#888;}
+			}
+		}
+
+		.context-menu-item.hover > .context-menu-list .hover .font-icon{color:#888;}
+		.hover > span > b{color:#888;}
+	}
+
+	//设置
+	#body{
+		.menu_left,.app_menu_left{
+			background: #fff;border-right:1px solid #f1f1f1;
+
+			@main_color:#eee;
+			h1{font-weight: 400;}
+			.setting a:hover{background:darken(@main_color,3%);}
+			.setting a.selected{background:darken(@main_color,5%);border-color:#ccc;}
+		}
+		.main .list{border-radius:0;}
+		.panel {margin-left: -1px;}
+		.main .nav a:hover,.main .nav a.this{
+			background:#fff;color:#666;
+			border-color:#ddd;border-bottom-color: #fff;
+		}
+	}
+	.frame-main .frame-right .frame-right-main .tools{border-color:#eee;}
+
+	.task_tab{
+		background: rgba(0, 0, 0, 0.05);
+		border-top: 1px solid rgba(0, 0, 0, 0.05);
+		.tabs .tab{
+			border-radius:0px;
+			box-shadow: 0 0 1px #444;
+			&.this{
+				box-shadow: 0 0 6px #2196f3;
+				border-color: #2196f3;
+			}
+		}
+	}
+	.tasktab-dragging{
+		box-shadow: 0 0 6px #2196f3;
+		border-color: #2196f3;
+	}
+
+
+
+	//编辑器 tab
+	div.tools .right .btn{background:#f3f3f3;border-radius:0;}
+	.edit_tab{
+		@height_color:#63acff;
+		/*tab*/
+		.tabs{
+			border-bottom: 1px solid #ddd;
+			/*border-bottom: 2px solid @height_color;height:28px;*/
+			.tab{background:#f6f6f6;color:#666;}
+			.close{.opacity(0.05);text-shadow:none;color:#fff;}
+			.tab.hover{background:#eee;}
+
+			.add{background:#ddd;border: 1px solid #eee;color:#666;}
+			.tab.this{background:@height_color;
+				border-left: 1px solid @height_color;margin-left: -1px;
+				border-right-color:@height_color;
+			}
+
+			.tab.this .close{.opacity(0.4);}
+			.tab.hover .close{.opacity(0.7);}
+			/*.tab.this.hover .close{color:#fff;}*/
+			.edit_changed a.close{.opacity(1);}
+			.tab.this.edit_changed a.close{color:#fff;}
+		}
+		.draggable-dragging{background:#f6f6f6;border-left: 3px solid @height_color;margin-left:-3px;}
+	}
+}
+

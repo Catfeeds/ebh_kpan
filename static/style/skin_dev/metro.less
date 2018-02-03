@@ -1,0 +1,155 @@
+@import "./base/base.less";
+@metro:#5579BA;//#17b5f4
+@metro_green:#0EA460;
+@metro_purple:#8D3CC4;
+@metro_pink:#DC4FAD;//#f55753
+@metro_orange:#FF8F32;
+
+@main_color:@metro;
+/*-debug-replace-*/
+
+body{
+	position: absolute;top: 0px;left: 0px;bottom: 0px;right: 0px;
+	.btn-group .btn { border-radius: 0px;}
+	.dropdown-menu{
+		border-radius:0px;
+		a:hover,.this a{
+			background:@main_color;color:#fff;
+		}
+	}
+
+	&#page_desktop .topbar{
+		background-color:fadeOut(@main_color,50%);
+		.content{
+			.open .topbar_menu,.topbar_menu:hover,.topbar_menu.this{
+				background:fadeOut(@main_color,70%);
+			}
+		}
+	}
+	.topbar{
+		background:@main_color;
+		.content{
+			.topbar_menu{border-color:lighten(@main_color,3%);}
+			.open .topbar_menu,.topbar_menu:hover,.topbar_menu.this,.top_right ul a.this{
+				background:lighten(@main_color,7%);border-color:lighten(@main_color,7%);
+			}
+		}
+	}
+	.aui_outer{
+		*border:1px solid @main_color;border:1px solid @main_color ~'\0/IE9';
+		.aui_state_focus .aui_title,.aui_title{background:@main_color;}
+		.aui_buttons button.aui_state_highlight{
+			background:@main_color;
+			&:hover{background:lighten(@main_color,5%);}
+			&:active{background:lighten(@main_color,15%);}
+		}
+		.aui_min:hover, .aui_max:hover{background:lighten(@main_color,10%);}
+		.aui_min:active, .aui_max:active{background:lighten(@main_color,15%);}
+	}
+	div.dialog-simple .aui_title{border-radius: 0;}
+	
+	#selContainer{/*选择框*/
+		border:1px solid darken(@main_color,30%);
+		background-color:@main_color;
+	}
+
+	.header-middle,.frame-header .header-content .header-right{
+		.btn-left-radius,.btn-right-radius{border-radius:0;}
+	}
+	.frame-main .frame-left{
+		background: #fafafa;
+		.ztree li a{
+			border-color:transparent;
+			&:hover{.file_hover();}
+			&.curSelectedNode,&.curSelectedNode:hover,&.curDropTreeNode{.file_select();}
+		}
+	}
+
+	div.fileContiner .file.file_not_writeable, 
+	.frame-main .frame-left .ztree li a.file_not_writeable {color:#3ec3ff !important;}
+
+	//文件列表
+	.file_select{
+		background:@main_color;border-color:transparent;color:#fff;border-radius:0px;filter:none;
+		.children_open i.font_icon{color:#fff;}
+	}
+	.file_hover{
+		background:#ffd987;border-color:transparent;color:#fff;border-radius:0px;
+		border-color:transparent;color:#444;border-radius:0;filter:none;
+	}
+	div.fileContiner{
+		&.fileList_list_split .file{
+			&.file2{background:none;}
+			&.select_split_parent{background: #e3f0ff;}
+			&.hover{.file_hover();}
+			&.select.select_split_parent{.file_select();}
+		}
+		.file{
+			&.file2 {background:#fff8e8;}
+			&.select,&.selectDragTemp{.file_select();}
+			&.hover{
+				.file_hover();
+				&.select,&.selectDragTemp{.file_select();}
+			}
+			&.select.file2,&.selectDragTemp.file2{.file_select();}
+		}
+
+		&.fileList_list_split,&.fileList_list{
+			.file.select,.file.selectDragTemp{
+				border-bottom: 1px solid lighten(@main_color,5%) !important;
+			}
+		}
+	}
+
+	//right_menu
+	.context-menu-list{
+		box-shadow: 0 10px 40px rgba(0,0,0,0.4);border-radius: 0;
+		border: 1px solid rgba(0,0,0,0.1);
+		background-clip: padding-box;
+		.context-menu-item{
+			line-height: 25px;height: 25px;padding: 0 15px 0 20px;
+			&.hover,&.selected.hover{background:darken(@main_color,5%);}
+		}
+	}
+
+	//设置
+	#body{
+		.menu_left,.app_menu_left{
+			background:darken(@main_color,5%);
+			h1{color: #fff;font-weight: 400;}
+			.setting a{color:#fff;}
+			.setting a:hover{background:lighten(@main_color,3%);}
+			.setting a.selected{background:lighten(@main_color,5%);border-color:#fff;color:#fff;}
+		}
+		.main .list{border-radius:0;}
+		.main .nav a:hover,.main .nav a.this{background:@main_color;border:1px solid @main_color;}
+	}
+
+
+	//编辑器 tab
+	.edit_tab{
+		@height_color:#63acff;
+		/*tab*/
+		.tabs{
+			border-bottom: 1px solid #ddd;
+			/*border-bottom: 2px solid @height_color;height:28px;*/
+			.tab{background:#f6f6f6;color:#666;}
+			.close{.opacity(0.05);text-shadow:none;color:#fff;}
+			.tab.hover{background:#eee;}
+
+			.add{background:#ddd;border: 1px solid #eee;color:#666;}
+			.tab.this{background:@height_color;
+				border-left: 1px solid @height_color;margin-left: -1px;
+				border-right-color:@height_color;
+			}
+
+			.tab.this .close{.opacity(0.4);}
+			.tab.hover .close{.opacity(0.7);}
+			/*.tab.this.hover .close{color:#fff;}*/
+			.edit_changed a.close{.opacity(1);}
+			.tab.this.edit_changed a.close{color:#fff;}
+		}
+		.draggable-dragging{background:#f6f6f6;border-left: 3px solid @height_color;margin-left:-3px;}
+	}
+}
+

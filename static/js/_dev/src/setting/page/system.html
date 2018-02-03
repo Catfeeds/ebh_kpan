@@ -1,0 +1,204 @@
+<div class="nav">
+	<a href="javascript:;"  class="this" data-page="setting">{{LNG.system_setting}}</a>
+	<a href="javascript:;" class="" data-page="setting_menu">{{LNG.system_setting_menu}}</a>
+	<a href="javascript:;" class="" data-page="setting_system_others">{{LNG.others}}</a>
+	<div style="clear:both;"></div>
+</div>
+
+{{if  G.is_root}}
+	<div class="setting_tools_right">
+		{{if core.versionType !="A"}}
+			<button class="fl-right btn btn-default btn-sm system_setting_more">{{LNG.more}}</button>
+		{{/if}}
+
+		{{if verIndex={"A":"free","O":"1","P":"2","Q":"3"} }}{{/if}}
+		{{if verKey = "version_vip_"+verIndex[core.versionType] }}{{/if}}
+		<span class="version_vip" id="{{verKey}}"><i class="font-icon icon-key"></i>{{LNG[verKey]}}</span>
+	</div>
+{{/if}}
+
+
+<div class="panel panel-default setting system_setting">
+	<div class="panel-body">
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.system_name}}:</div>
+			<div class="setting_content">
+				<input type="text" name="system_name" value="{{data.system_name | window.htmlEncode}}" /><i class="desc">{{LNG.system_name_desc}}</i>
+				<button  class="btn btn-default btn-sm" style="margin-left:20px;" onclick="core.update();">{{LNG.check_update}}</button>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.system_desc | window.htmlEncode}}:</div>
+			<div class="setting_content">
+				<input type="text" name="system_desc" value="{{data.system_desc}}" /><i class="desc">{{LNG.system_desc}}</i>
+			</div>
+		</div>
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.path_hidden}}:</div>
+			<div class="setting_content">
+				<input type="text" name="path_hidden" value="{{data.path_hidden}}" /><i class="desc">{{LNG.path_hidden_desc}}</i>
+			</div>
+		</div>
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.new_user_folder}}:</div>
+			<div class="setting_content">
+				<input type="text" name="new_user_folder" value="{{data.new_user_folder}}" /><i class="desc">{{LNG.new_user_folder_desc}}</i>
+			</div>
+		</div>
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.new_user_app}}:</div>
+			<div class="setting_content">
+				<input type="text" name="new_user_app" value="{{data.new_user_app}}"/><i class="desc">{{LNG.new_user_app_desc}}</i>
+			</div>
+		</div>
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.auto_login}}:</div>
+			<div class="setting_content">
+				<label>
+					<input type="checkbox" class="kui-checkbox-ios size-big" name="auto_login" {{if data.auto_login=='1'}}checked="checked"{{/if}} /><em></em>
+					<i style="width:450px;">{{#LNG.auto_login_desc}}</i>
+				</label>
+			</div>
+		</div>
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.need_check_code}}:</div>
+			<div class="setting_content">
+				<label>
+					<input type="checkbox" class="kui-checkbox-ios size-big" name="need_check_code" {{if data.need_check_code=='1'}}checked="checked"{{/if}} /><em></em>
+				</label>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.first_in}}:</div>
+			<div class="setting_content">
+				<label><input type="radio" name="first_in" value="desktop" class="kui-radio"
+					{{if data.first_in=='desktop'}}checked="checked"{{/if}}/>
+					<span>{{LNG.ui_desktop}}</span>
+				</label>
+				<label><input type="radio" name="first_in" value="explorer" class="kui-radio"
+					{{if data.first_in=='explorer'}}checked="checked"{{/if}}/>
+					<span>{{LNG.ui_explorer}}</span>
+				</label>
+				<label><input type="radio" name="first_in" value="editor"  class="kui-radio"
+					{{if data.first_in=='editor'}}checked="checked"{{/if}}/>
+					<span>{{LNG.ui_editor}}</span>
+				</label>
+			</div>
+		</div>
+
+		<!-- 提交 -->
+		<div class="form_row from_row_submit">
+			<div class="setting_content">
+				<button class="btn btn-primary system_save">{{LNG.button_save}}</button>
+			</div>
+		</div>
+	</div>
+
+
+	{{if info}}
+	<div class="alert alert-warning" role="alert">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<div class="pl-10">
+			<h3>{{LNG.php_env_error}}<a href="javascript:;" class="button warning phpinfo"><i class="icon-warning-sign"></i>phpinfo</a></h3>
+			{{#info}}
+		</div>
+	</div>
+	{{/if}}
+</div>
+
+
+<div class="panel panel-default setting_menu hidden">
+	<table id="list" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+		<tr class="title">
+			<td width="10%">{{LNG.menu_name}}</td>
+			<td>{{LNG.url_path}}<span>({{LNG.url_path_desc}})</span></td>
+			<td>{{LNG.action}}</td>
+		</tr>
+
+		{{if data.menu.push({'name':'','type':'','url':'','target':'_blank','use':'1'}) }}{{/if}}
+		{{each data.menu as value key}}
+		{{if menu_system = value['type'] == 'system' ? 'menu_system':''}}{{/if}}
+		{{if menu_show = value['use']  == '1' ? 'menu_show':'menu_hidden'}}{{/if}}
+		{{if menu_add = value['name']  == '' ? 'menu_default hidden':''}}{{/if}}
+		<tr class="menu_list {{menu_system}} {{menu_show}} {{menu_add}}">
+			<td class="name"><input type="text" name="name" value="{{value.name | menu_info_decode}}"/>
+				<span>{{if LNG['ui_'+value['name']]}} {{LNG['ui_'+value['name']]}} {{else}} null {{/if}}</span>
+			</td>
+			<td class="url">
+				<input type="text" name="url" value="{{value.url | menu_info_decode}}">
+				<span>{{value.name}}</span>
+				<label>
+					<input type="checkbox" name="target" class="kui-checkbox size-small" value="{{value.target}}"
+					{{if value.target=='_blank'}}checked="checked"{{/if}}/>
+					<span>{{LNG.menu_open_window}}</span>
+				</label>
+			</td>
+			<td class="action">
+				<button class='btn btn-default btn-sm move_up'><i class="font-icon icon-arrow-up"></i></button>
+				<button class='btn btn-default btn-sm move_down'><i class="font-icon icon-arrow-down"></i></button>
+				<button class='btn btn-default btn-sm move_hidden'>
+					{{if value.use=='1'}} {{LNG.menu_hidden}} {{else}} {{LNG.menu_show}} {{/if}}
+				</button>
+				<button class='btn btn-default btn-sm move_del'>{{LNG.menu_move_del}}</button>
+			</td>
+		</tr>
+		{{/each}}
+		</tbody>
+	</table>
+	
+	<a href="javascript:void(0)" class="add system_menu_add "><i class="icon-plus pr-10"></i>{{LNG.button_add}}</a>
+	<div class="form_row">
+		<button class="btn btn-primary system_menu_save">{{LNG.button_save}}</button>
+	</div>
+</div>
+
+
+
+<div class="panel panel-default setting_system_others hidden">
+	<div class="panel-body">
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.action}}:</div>
+			<div class="setting_content">
+				<button class="btn btn-warning mr-20" system-tools="clear_cache">{{LNG.setting_clear_cache}}</button>
+				<button class="btn btn-warning mr-20" system-tools="clear_user_recycle">{{LNG.setting_clear_user_recycle}}</button>
+				<!-- <button class="btn btn-warning mr-20" system-tools="clear_session">清空session</button> -->
+			</div>
+		</div>
+		<div class="form_row line"></div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.setting_icp}}:</div>
+			<div class="setting_content">
+				<input type="text" name="global_icp" value="{{data.global_icp}}" />
+				<i class="desc"></i>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.setting_global_css}}:</div>
+			<div class="setting_content">
+				<textarea name="global_css">{{data.global_css}}</textarea>
+				<i class="desc">{{LNG.setting_global_css_desc}}</i>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.setting_global_html}}:</div>
+			<div class="setting_content">
+				<textarea name="global_html">{{data.global_html}}</textarea>
+				<i class="desc">{{LNG.setting_global_html_desc}}</i>
+			</div>
+		</div>
+
+		<!-- 提交 -->
+		<div class="form_row from_row_submit">
+			<div class="setting_content">
+				<button class="btn btn-primary system_others_save">{{LNG.button_save}}</button>
+			</div>
+		</div>
+	</div>
+
+</div>

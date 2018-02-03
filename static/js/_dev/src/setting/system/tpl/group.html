@@ -1,0 +1,71 @@
+<div class='content_box'>
+	<div class='title'>
+		<div class="titleinfo">
+			{{if !groupInfo.name}}
+			<i class="font-icon icon-plus"></i>{{LNG.system_group_create}}
+			{{else}}
+			<i class="font-icon icon-pencil"></i>{{groupInfo.name}}
+			{{/if}}
+		</div>
+		{{if groupInfo.name}}
+		<div class="share_view_info">{{groupInfo.config.size_use}}/{{groupInfo.config.size_max}}</div>
+		{{/if}}
+	</div>
+	<div class='content_info'>
+		<div class="input_line">
+			<span class="input_title">{{LNG.system_group_name}}:</span>
+			<input id="name" type="text" name="name" value="{{groupInfo.name}}" />
+			{{if groupInfo.name}}
+			<a href="javascript:void(0);" class="font-icon-label dlg_goto_path"><i class="font-icon icon-folder-open"></i></a>
+			{{else}}
+			<i class="desc">{{LNG.name}}</i>
+			{{/if}}
+			<div style="clear:both"></div>
+		</div>
+		<div class="input_line size_max_set">
+			<span class="input_title">{{LNG.space_size}}:</span>
+			<input id="size_max" type="text" name="size_max" value="{{groupInfo.config.size_max}}" />
+			<i class="desc label label-default" style="color:#698ebf;background:#E9F3F9;"></i>
+			<div style="clear:both"></div>
+		</div>
+		<div class="input_line select_parent_content">
+			<span class="input_title">{{LNG.system_group_father}}:</span>
+			<input id="group_parent" type="hidden" name="parent_id" value="{{groupInfo.parent_id}}" />
+			<button class="btn btn-default btn-sm" type="button" style="padding: 5px 10px;">
+				<i class="font-icon icon-group"></i><span class="group_title pl-10"></span>
+			</button>
+			<ul class="select_group hidden ztree" id="group_parent_select"></ul>
+			<div style="clear:both"></div>
+		</div>
+
+		<div class="input_line" style="margin-bottom: -5px;">
+			<span class="input_title">&nbsp;</span>
+			<a href="javascript:void(0);" class="btn btn-sm user_setting_more_btn" style="padding-left:0;">{{LNG.more}}</a>
+			<div style="clear:both"></div>
+		</div>
+		<div class="user_setting_more {{if !groupInfo.home_path}}hidden{{/if}}">
+			<div class="input_line select_path">
+				<span class="input_title">{{LNG.system_set_home_path}}:</span>
+				<input id="home_path" type="text" name="home_path" value="{{groupInfo.home_path}}" placeholder="{{LNG.system_set_home_path_tips}}"/>
+				<a href="javascript:void(0);" class="btn btn-sm btn-default select_btn">
+					<i class="font-icon icon-folder-open"></i>
+				</a>
+				<a href="javascript:void(0);" class="btn btn-sm btn-link reset">
+					<i class="font-icon icon-remove"></i>
+				</a>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="share_action">		
+		{{if !groupInfo.name}}
+		<button type="button" class="btn btn-primary" id="system_save">{{LNG.button_add}}</button>
+		<button type="button" class="btn btn-primary" id="system_save_goon_add">{{LNG.button_save_and_add}}</button>
+		{{else}}
+		<button type="button" class="btn btn-primary" id="system_save">{{LNG.button_save}}</button>
+		<a type="button" href="javascript:void(0);" class="remove_button">{{LNG.button_del}}</a>
+		{{/if}}
+	</div>
+</div>
+

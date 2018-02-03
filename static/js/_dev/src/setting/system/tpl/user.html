@@ -1,0 +1,104 @@
+<div class='content_box'>
+	<div class='title'>
+		<div class="titleinfo">
+			{{if !user_info.name}}
+			<i class="font-icon icon-group"></i>{{LNG.system_member_add}}
+			{{else}}
+			<i class="font-icon icon-pencil"></i>{{user_info.name}}	        
+			{{/if}}
+		</div>    
+		{{if user_info.name}}
+		<div class="share_view_info">{{user_info.config.size_use}}/{{user_info.config.size_max}}</div>
+		{{/if}}    
+	</div>
+	<div class='content_info'>
+		<div class="input_line">
+			<span class="input_title">{{LNG.username}}:</span>
+			<input id="name" type="text" name="name" value="{{user_info.name}}" />
+			{{if user_info.name}}
+			<a href="javascript:void(0);" class="font-icon-label dlg_goto_path"><i class="font-icon icon-folder-open"></i></a>
+			{{else}}
+			<i class="desc">{{LNG.username}}</i>
+			{{/if}}
+			<div style="clear:both"></div>
+		</div>
+		<div class="input_line">
+			<span class="input_title">{{LNG.password}}:</span>
+			<input id="password" type="text" name="password" 
+			value="{{if !user_info.name}}{{user_info.password}}{{/if}}" 
+			placeholder="{{if user_info.name}}{{LNG.system_member_password_tips}}{{/if}}"/>
+			{{if user_info.name}}<i class="desc">{{LNG.system_member_password_tips}}</i>{{/if}}
+			<div style="clear:both"></div>
+		</div>
+		<div class="input_line size_max_set">
+			<span class="input_title">{{LNG.space_size}}:</span>
+			<input id="size_max" type="text" name="size_max" value="{{user_info.config.size_max}}" />
+			<i class="desc label label-default" style="color:#698ebf;background:#E9F3F9;"></i>
+			<div style="clear:both"></div>
+		</div>
+		<div class="input_line">
+			<span class="input_title">{{LNG.system_member_role}}:</span>
+			<input type="hidden" id="role" name="role" value="{{user_info.role}}"/>
+			<div class="btn-group select_drop_menu">
+			  <button class="btn btn-default btn-xs" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="role_title pr-5">
+				{{if role_list[user_info.role]}}
+				{{role_list[user_info.role]}}
+				{{else}}
+				<i>{{LNG.system_member_role_select}}</i>
+				{{/if}}
+				</span><span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+				{{each role_list as value key}}
+					{{if key==user_info.role}}
+					<li><a href="javascript:void(0);" class="selected" data-role-id="{{key}}">{{value}}</a></li>
+					{{else}}
+					<li><a href="javascript:void(0);" data-role-id="{{key}}">{{value}}</a></li>
+					{{/if}}
+				{{/each}}
+			  </ul>
+			</div>
+
+			<!-- <input type="text" id="role" name="role" value="{{user_info.role}}" /> -->
+			<a href="javascript:void(0);" class="btn btn-sm user_setting_more_btn">{{LNG.more}}</a>
+			<div style="clear:both"></div>
+		</div>
+
+		<div class="user_setting_more {{if !user_info.home_path}}hidden{{/if}}">
+			<div class="input_line select_path">
+				<span class="input_title">{{LNG.system_set_home_path}}:</span>
+				<input id="home_path" type="text" name="home_path" value="{{user_info.home_path}}" placeholder="{{LNG.system_set_home_path_tips}}"/>
+				<a href="javascript:void(0);" class="btn btn-sm btn-default select_btn">
+					<i class="font-icon icon-folder-open"></i>
+				</a>
+				<a href="javascript:void(0);" class="btn btn-sm btn-link reset">
+					<i class="font-icon icon-remove"></i>
+				</a>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<div class="input_line">
+			<span class="input_title">{{LNG.system_member_group}}:</span>
+			<input id="group_info" type="hidden" name="group_info" value="{{user_info.group_info}}" />
+			<div class="dlg_group_display">
+				<div class="cell"></div>
+				<button class="btn btn-default btn-sm dlg_group_select" type="button">
+					<i class="font-icon icon-pencil"></i><span class="group_title pl-10">{{LNG.system_member_group_edit}}</span>
+				</button>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+
+	<div class="share_action">
+		{{if !user_info.name}}
+		<button type="button" class="btn btn-primary" id="system_save">{{LNG.button_add}}</button>
+		<button type="button" class="btn btn-primary" id="system_save_goon_add">{{LNG.button_save_and_add}}</button>
+		{{else}}
+		<button type="button" class="btn btn-primary" id="system_save">{{LNG.button_save}}</button>
+		<a type="button" href="javascript:void(0);" class="remove_button">{{LNG.button_del}}</a>
+		{{/if}}
+	</div>
+</div>

@@ -1,0 +1,15 @@
+author:eker-hfs
+
+1.安装node：下载exe安装
+2.安装npm：npm install
+3.安装grunt：npm install -g grunt-cli
+3.执行编译: grunt build
+
+
+备注:
+\kpan\config\config.php
+开发版 
+define('GLOBAL_DEBUG',1);//0 or 1
+
+发行版
+define('GLOBAL_DEBUG',0);

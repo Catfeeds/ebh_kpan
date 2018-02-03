@@ -1,0 +1,86 @@
+<div class='pathinfo'>
+	{{if download_path}}
+	<div class='p'>
+		<div class='title' style="line-height: 30px;">{{LNG.download_address}}:</div>
+		<div class="content input-group">
+			<input type="text" class="download_url" value='{{download_path}}'>
+			<div class="input-group-btn">
+				<button type="button" class="btn btn-default open_window">{{LNG.open}}</button>
+				<button type="button" class="btn btn-default qrcode"><i class="icon-qrcode"></i></button>
+			</div>
+		</div>
+		<div style='clear:both'></div>
+	</div>
+	<div class='line'></div>
+	{{/if}}
+
+	<div class='p'>
+		<div class='title'>{{LNG.address}}:</div>
+		<div class='content' id='id_fileinfo_path'>{{path |window.htmlEncode}}</div>
+		<div style='clear:both'></div>
+	</div>
+	<div class='p'>
+		<div class='title'>{{LNG.size}}:</div>
+		<div class='content'>{{size_friendly}}  ({{size}} Byte)</div>
+		<div style='clear:both'></div>
+	</div>
+
+	{{if file_md5}}
+	<div class='p'>
+		<div class='title'>MD5:</div>
+		<div class='content {{if file_md5 == "..."}}file_md5_loading{{/if}}'>{{file_md5}}</div>
+		<div style='clear:both'></div>
+	</div>
+	{{/if}}
+
+	{{if image_size}}
+	<div class='p'>
+		<div class='title'>{{LNG.image_size}}:</div>
+		<div class='content'>{{image_size.width}} × {{image_size.height}}</div>
+		<div style='clear:both'></div>
+	</div>
+	{{/if}}
+
+	<div class='line'></div>
+
+	{{if ctime}}
+	<div class='p'>
+		<div class='title'>{{LNG.create_time}}</div>
+		<div class='content'>{{ctime}}</div>
+		<div style='clear:both'></div>
+	</div>
+	{{/if}}
+
+	{{if mtime}}
+	<div class='p'>
+		<div class='title'>{{LNG.modify_time}}</div>
+		<div class='content'>{{mtime}}</div>
+		<div style='clear:both'></div>
+	</div>
+	{{/if}}
+
+	{{if atime}}
+	<div class='p'>
+		<div class='title'>{{LNG.last_time}}</div>
+		<div class='content'>{{atime}}</div>
+		<div style='clear:both'></div>
+	</div>
+	{{/if}}
+	
+	{{if mode}}
+		<div class='line'></div>
+		<div class='p change_permission'>
+			<div class='title'>{{LNG.permission}}:</div>
+			<div class='content'>{{mode}}</div>
+			<div style='clear:both'></div>
+		</div>
+		{{if is_root=="1"}}
+		<!--<div class='p'>
+			<div class='title'>{{LNG.permission_edit}}:</div>
+			<div class='content'><input type='text' class='info_chmod' value='755'/>
+			<button class='btn btn-default btn-sm edit_chmod' type='button'>{{LNG.button_save}}</button></div>
+			<div style='clear:both'></div>
+		</div>-->
+		{{/if}}
+	{{/if}}
+</div>

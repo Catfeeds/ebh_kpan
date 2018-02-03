@@ -1,0 +1,96 @@
+<!-- 列表模式文件夹 -->
+{{if type=='list_folder'}}
+<div data-path='{{list.path |window.pathHashEncode}}'
+class='file
+{{if index%2==0}}file2{{/if}} {{list.menuType}}
+{{if list.menuType}}systemBox{{else}}folderBox menufolder{{/if}}
+{{if !list.sid && typeof(list.is_readable)!="undefined"}}
+{{if !list.is_writeable}} file_not_writeable{{/if}}
+{{if !list.is_readable}}file_not_readable{{/if}}{{/if}}'
+title='{{LNG.permission}}:{{list.mode}}&#10;{{LNG.modify_time}}:{{list.mtime}}'
+data-size="0" fileid='{{ list.fileid }}' this_uid='{{ list.this_uid }}'>
+	<div class='ico' filetype='folder'>
+		{{if list.ext}}
+		{{list.ext |core.iconSmall}}
+		{{else}}
+		{{"folder" |core.iconSmall}}
+		{{/if}}
+		{{if list.meta_info}}
+			<div class='meta_info {{list.meta_info}}'>{{list.meta_info |core.icon}}</div>
+		{{/if}}
+	</div>
+	<div class='filename' favid='{{list.favid}}'>
+		<span class='title'>
+			{{if typeof(list.exists)=='number' && list.exists==0}}
+				<b style="color:red;" class="file_not_exists">{{list.name}}</b>
+			{{else}}
+				{{list.name}}
+			{{/if}}
+		</span>
+	</div>
+	<!-- <div class='filetype'>{{LNG.folder}}</div> -->
+	<div class='filesize'></div>
+	<div class='filetime'>{{list.mtime}}</div>
+	<div style='clear:both'></div>
+</div>
+
+<!-- 列表模式文件 -->
+{{else if type=='list_file'}}
+<div data-path='{{list.path |window.pathHashEncode}}'
+class='file {{if index%2==0}}file2{{/if}} {{list.menuType}}
+{{if list.menuType}}systemBox{{else}}fileBox menufile{{/if}}
+{{if !list.sid && typeof(list.is_readable)!="undefined"}}
+{{if !list.is_writeable}} file_not_writeable{{/if}}
+{{if !list.is_readable}}file_not_readable{{/if}}{{/if}}'
+{{if list.ext=='oexe'}} data-app='{{window.base64Encode(window.jsonEncode(list))}}'{{/if}}
+title='{{LNG.size}}:{{list.size |core.fileSize}}&#10;{{LNG.permission}}:{{list.mode}}&#10;{{LNG.modify_time}}:{{list.mtime}}'
+data-size="{{list.size}}" fileid='{{ list.fileid }}' this_uid='{{ list.this_uid }}'>
+	{{if window.inArray(core.filetype['image'],list.ext)}}
+		<div class='picasaImage picture ico' filetype='{{list.ext |window.htmlEncode}}' picasa='{{list.fileid |core.path3url|window.htmlEncode}}'>
+		{{if window.G.sid}}
+			<img class="lazyload_ready" data-original='index.php?share/image&user={{window.G.user}}&sid={{window.G.sid}}&path={{list.path |window.urlEncode|window.htmlEncode}}&fileid={{ list.fileid }}' draggable='false' ondragstart="return false;"/>
+		{{else}}
+			<img class="lazyload_ready" data-original='index.php?explorer/image&path={{list.path |window.urlEncode|window.htmlEncode}}&fileid={{ list.fileid }}' draggable='false' ondragstart="return false;"/>
+		{{/if}}
+		</div>
+	{{else if list.type == 'app_link'}}<!-- 快捷方式 -->
+		{{if list.content.search('ui.path.open') == 0}}
+			<div class='ico' filetype='{{list.ext |window.htmlEncode}}'>
+				{{list.name.replace('.oexe','') |core.pathExt|core.iconSmall}}
+			</div>
+		{{else if list.content.search('ui.path.list') == 0}}
+			<div class='ico' filetype='{{list.ext |window.htmlEncode}}'>
+				{{list.icon |core.icon}}
+			</div>
+		{{else}}
+			<div class='ico' filetype='{{list.ext |window.htmlEncode}}'>{{"folder" |core.iconSmall}}</div>
+		{{/if}}
+		<div class="meta_info app_link">{{'app_link' |core.icon}}</div>
+	{{else}}
+		<div class='ico' filetype='{{list.ext |window.htmlEncode}}'>
+			 {{if list.ext=='oexe'}}
+			 	{{'oexe' |core.iconSmall}}
+			 {{else}}
+			 	{{list.ext |core.iconSmall}}
+			 {{/if}}
+		</div>
+	{{/if}}
+	{{if list.meta_info}}
+		<div class='meta_info {{list.meta_info}}'>{{list.meta_info |core.icon}}</div>
+	{{/if}}
+
+	<div class='filename' favid='{{list.favid}}'>
+		<span class='title'>
+		{{if typeof(list.exists)=='number' && list.exists==0}}
+			<b style="color:red;" class="file_not_exists">{{list.name}}</b>
+		{{else}}
+			{{if list.ext=='oexe'}}{{list.name.replace('.oexe','')}}{{else}}{{list.name}}{{/if}}
+		{{/if}}
+		</span>
+	</div>
+	<!-- <div class='filetype'>{{list.ext |window.htmlEncode}} {{LNG.file}}</div> -->
+	<div class='filesize'>{{list.size |core.fileSize}}</div>
+	<div class='filetime'>{{list.mtime}}</div>
+	<div style='clear:both'></div>
+</div>
+{{/if}}

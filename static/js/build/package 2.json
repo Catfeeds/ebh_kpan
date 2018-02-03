@@ -1,0 +1,18 @@
+{
+    "family": "kodexplorer",
+    "version": "3.38",
+    "name": "kodexplorer",
+    "static_path": "/Library/WebServer/Documents/localhost/kod/kod_dev/static/js/",
+    "spm": {
+        "alias": {
+            "jquery": "/Library/WebServer/Documents/localhost/kod/kod_dev/static/js/lib/jquery-1.8.0.min"
+        }
+    },
+    "devDependencies": {
+        "grunt": "0.4.2",
+        "grunt-cmd-transport": "0.4.0",
+        "grunt-cmd-concat": "0.1.0",
+        "grunt-contrib-uglify": "0.2.0",
+        "grunt-contrib-clean": "0.4.0"
+    }
+ }

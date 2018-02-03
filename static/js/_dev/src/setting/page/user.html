@@ -1,0 +1,81 @@
+<div class="nav">
+	<a href="javascript:;"  class="this" data-page="setting_basic">{{LNG.setting_basic}}</a>
+	<a href="javascript:;" class="" data-page="setting_menu">{{LNG.setting_password}}</a>
+	<div style="clear:both;"></div>
+</div>
+
+<div class="panel panel-default setting_basic system_setting user_config_setting">
+	<div class="panel-body">
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.recycle_open_if}}:</div>
+			<div class="setting_content">
+				<label class="disable-ripple">
+					<input type="checkbox" class="kui-checkbox-ios size-big" name="recycle_open"
+					 {{if data.user.recycle_open=='1'}}checked="checked"{{/if}}/><em></em>
+				</label>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.setting_user_animate_open}}:</div>
+			<div class="setting_content">
+				<label class="disable-ripple">
+					<input type="checkbox" class="kui-checkbox-ios size-big" name="animate_open"
+					 {{if data.user.animate_open !='0'}}checked="checked"{{/if}}/><em></em>
+				</label>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.setting_user_sound_open}}:</div>
+			<div class="setting_content">
+				<label class="disable-ripple">
+					<input type="checkbox" class="kui-checkbox-ios size-big" name="sound_open"
+					 {{if data.user.sound_open =='1'}}checked="checked"{{/if}}/><em></em>
+				</label>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.upload_exist}}:</div>
+			<div class="setting_content">
+				<label>
+					<input type="radio" class="kui-radio" name="file_repeat" value="rename" {{if data.user.file_repeat=='rename'}}checked="checked"{{/if}}/>
+					<span>{{LNG.upload_exist_rename}}</span>
+				</label>
+				<label>
+					<input type="radio" class="kui-radio" name="file_repeat" value="replace" {{if data.user.file_repeat=='replace'}}checked="checked"{{/if}}/>
+					<span>{{LNG.upload_exist_replace}}</span>
+				</label>
+				<label>
+					<input type="radio" class="kui-radio" name="file_repeat" value="skip" {{if data.user.file_repeat=='skip'}}checked="checked"{{/if}}/>
+					<span>{{LNG.upload_exist_skip}}</span>
+				</label>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="panel panel-default setting_menu hidden">
+	<div class="panel-body">
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.setting_password_old}}:</div>
+			<div class="setting_content"><input type="password" id="password_now"value="" /></div>
+		</div>
+
+		<div class="form_row">
+			<div class='setting_title'>{{LNG.setting_password_new}}:</div>
+			<div class="setting_content"><input type="password" id="password_new" value=""/></div>
+		</div>
+
+		<!-- 提交 -->
+		<div class="form_row">
+			<div class='setting_title'></div>
+			<div class="setting_content">
+				<button onclick="Setting.tools();" class="btn btn-primary save">{{LNG.button_save}}</button>
+			</div>
+		</div>
+	</div>
+</div>

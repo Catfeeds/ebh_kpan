@@ -1,0 +1,75 @@
+<div class="edit_content">
+	<pre id="{{uuid}}" class="ace_editor_content"></pre>
+	<div class="resize hidden"></div><!-- 预览 -->
+	<div class="edit_right_frame hidden">
+		<div class="right_main">
+			<div class="function_list_frame hidden">
+				<div class="function_list_tool">
+					<div class="box">
+						<span> <i class="icon-code"></i>{{LNG.function_list}}</span>
+						<a href="javascript:;" class="tool_close" title="{{LNG.close}}"><i class="font-icon icon-remove"></i></a>
+					</div>
+					<div class="function_search">
+						<input type="text" placeholder="Search(ctrl+shift+e)">
+						<i class="font-icon icon-remove-sign search_reset hidden"> </i>
+					</div>
+				</div>
+				<div class="function_list_parent">
+					<div class="function_list_box"></div>
+				</div>
+			</div>
+			<!-- 函数列表 -->
+
+			<div class="preview_url_frame can_right_menu hidden">
+				<div class="preview_url_tool">
+					<div class="input_content"><input type="text" value=""/></div>
+					<div class="box">
+						<a href="javascript:;" class="tool_open_url" title="{{LNG.open_ie}}"><i class="font-icon icon-external-link"></i></a>
+						<a href="javascript:;" class="tool_refresh" title="{{LNG.refresh}}"><i class="font-icon icon-refresh"></i></a>
+						<a href="javascript:;" class="tool_close" title="{{LNG.close}}"><i class="font-icon icon-eye-close"></i></a>
+					</div>
+				</div>
+				<div class="preview_frame_content">
+					<iframe src="" style="width:100%;height:98%;border:0;"></iframe>
+				</div>
+			</div>
+			<!-- url浏览 -->
+
+			<div class="preview_markdown_frame can_right_menu hidden">
+				<div class="preview_markdown_tool">
+					<div class="toolbar"><div class="content"></div></div>
+					<div class="box">
+						<div class="content">
+							<a href="javascript:;" markdown_action="tool_markdown_menu" title="{{LNG.download}}"><i class="font-icon icon-reorder"></i></a>
+							<a href="javascript:;" markdown_action="tool_markdown_max" title="{{LNG.open_ie}}"><i class="font-icon icon-resize-full"></i></a>
+							<a href="javascript:;" markdown_action="tool_markdown_full" title="{{LNG.close}}"><i class="font-icon icon-columns"></i></a>
+							<a href="javascript:;" markdown_action="tool_markdown_setting" title="{{LNG.more}}"><i class="font-icon icon-ellipsis-horizontal"></i></a>
+						</div>						
+					</div>
+					<div class="markdown_setting hidden">
+						<ul>
+							<li><a href="javascript:;" markdown_action="tool_open_url"><i class="icon-external-link"></i>{{LNG.preview}}</a></li>
+							<li class="line"></li>
+							<li><a href="javascript:;" markdown_action="tool_markdown_download_html"><i class="icon-cloud-download"></i>{{LNG.download}} html</a></li>
+							<li><a href="javascript:;" markdown_action="tool_markdown_download_markdown"><i class="icon-cloud-download"></i>{{LNG.download}} markdown</a></li>
+							<li><a href="javascript:;" markdown_action="tool_markdown_download_pdf"><i class="icon-cloud-download"></i>{{LNG.download}} pdf</a></li>
+							<li class="line"></li>
+							<li><a href="javascript:;" markdown_action="tool_markdown_help"><i class="icon-question"></i>{{LNG.help}}</a></li>
+						</ul>
+					</div>
+					<div class="markdown_help container-fluid hidden">
+						<h3>Markdown {{LNG.help}}</h3>
+						<div class="row content"></div>
+					</div>
+					<div class="markdown_menu_box hidden">
+						<h3>{{LNG.markdown_content}}</h3>
+						<div class="content"></div>
+					</div>
+				</div>
+				<div class="markdown_preview can_select"></div>
+			</div>
+			<!-- markdown -->
+		</div>
+	</div>
+</div>
+

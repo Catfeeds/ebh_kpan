@@ -1,0 +1,82 @@
+<div class="user_tool_bar">
+	<div class="btn-group btn-group-sm ml-10">
+		<button type="button" class="btn btn-default" data-action="user_add">{{LNG.system_member_add}}</button>
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="caret"></span>&nbsp;
+			<span class="sr-only">Dropdown</span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="javascript:void(0);" data-action="user_import">{{LNG.system_member_import}}</a></li>
+		</ul>
+	</div>
+	<div class="btn-group btn-group-sm ml-10 button_aciton_muti">
+		<button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="role_title pr-5">{{LNG.system_member_group_config}}</span><span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="javascript:void(0);" data-action="group_remove_from">{{LNG.system_member_group_remove}}</a></li>
+			<li><a href="javascript:void(0);" data-action="group_add">{{LNG.system_member_group_insert}}</a></li>
+			<li class="divider disabled"></li>
+			<li><a href="javascript:void(0);" data-action="group_reset">{{LNG.system_member_group_reset}}</a></li>
+		</ul>
+	</div>
+	<div class="btn-group btn-group-sm ml-5 button_aciton_muti">
+		<button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="role_title pr-5">{{LNG.system_member_role}}</span><span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			{{each role_list as value key}}
+			<li><a href="javascript:void(0);" data-action="role_set" data-role-id="{{key}}">{{value}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<div class="btn-group btn-group-sm button_aciton_muti ml-10">
+		<button class="btn btn-default" data-action="user_status_close">{{LNG.system_member_unuse}}</button>
+		<button class="btn btn-default" data-action="user_status_open">{{LNG.system_member_use}}</button>
+		<button class="btn btn-default" data-action="user_remove">{{LNG.remove}}</button>
+	</div>
+</div>
+<div class="user_list">
+	<table id="list" align="center" border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr class="title">
+				<td class="select"><input type='checkbox' class="user_select_set kui-checkbox size-small"/></td>
+				<td class="name">{{LNG.username}}</td>
+				<td class="role">{{LNG.system_member_role}}</td>
+				<td class="space">{{LNG.space_size_use}}</td>
+				<td class="group">{{LNG.system_member_group}}</td>
+			</tr>
+			{{each user_list as v i}}
+				{{if v && (select_group=='1' || v.group_info[select_group]) }}
+				<tr data-id="{{v.user_id}}" data-action="user_list_select" class="user_action_menu user_list_cell {{if v.status=="0"}}unuse{{/if}}">
+					<td class="select">
+						{{if v.user_id!='1'}}<input type='checkbox' class="user_select kui-checkbox size-small"/>{{/if}}
+					</td>
+					<td class="name">
+						<a data-action="user_list_edit" href="javascript:void(0);">{{v.name}}</a>
+						<span class="label-small" {{if v.home_path}}style="background:#84d9ff;"{{/if}}>{{v.user_id}}</span>
+					</td>
+					<td class="role">{{role_list[v.role]}}</td>
+					<td class="space">{{v.config.size_use}}/{{v.config.size_max}}</td>
+					<td class="group">
+						{{each v.group_info as group_read group_id}}
+							{{if group_list[group_id]}}
+								{{if group_read=="read"}}
+								<span class="label label-info" title="{{LNG.system_role_read}}">{{group_list[group_id]['name']}}</span>
+								{{else}}
+								<span class="label label-primary" title="{{LNG.system_role_write}}">{{group_list[group_id]['name']}}</span>
+								{{/if}}
+							{{else}}
+								<!-- <span class="label label-danger">{{group_id}}</span> -->
+							{{/if}}
+						{{/each}}
+					</td>
+				</tr>
+				{{/if}}
+			{{/each}}
+		</tbody>
+	</table>
+</div><!-- 用户列表 -->
+
+

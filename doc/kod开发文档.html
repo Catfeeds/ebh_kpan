@@ -1,0 +1,236 @@
+<!doctype html><html> <head><meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> <head><title>kod开发文档</title> </head> <link rel="stylesheet" type="text/css" href="http://127.0.0.1/kod/kod_dev/static/js/lib/markdown/katex/katex.min.css"> <style type="text/css"> body{ font-family:"Helvetica Neue","Helvetica","Microsoft Yahei","微软雅黑","Lantinghei SC","STXihei","WenQuanYi Micro Hei",Arial,sans-serif; text-align:justify;margin:auto;font-size:14px;line-height:1.6em; color:#333;background:#fefefe;padding:15px;margin:30px auto;position: relative; -webkit-font-smoothing: antialiased;font-smoothing: antialiased; } article,footer,header,nav{width:700px;margin:0 auto} article{margin-top:4em;margin-bottom:4em;min-height:400px} footer{margin-bottom:50px} video{margin:2em 0;border:1px solid #ddd} nav{font-size:.9em;font-style:italic;border-bottom:1px solid #ddd;padding:1em 0} nav p{margin:0} details{margin: 15px 0;} summary{cursor:pointer;padding: 4px;} summary:focus{outline: none;box-shadow: 0 0 3px #2196F3;} .h1,h1{font-size:2.2em;} .h2,h2{font-size:1.9em;} .h3,h3{font-size:1.6em;} .h4,h4{font-size:1.3em;} .h5,h5{font-size:1.2em;} .h6,h6{font-size:1.1em;} .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{ font-family:inherit;font-weight:500;color: #333; line-height:1.5em;padding:0;margin:1em 0 0.5em 0; } .h1,h1{letter-spacing: 1px;} .h2,h2{border-bottom: 1px solid #ddd;padding-bottom: 0.15em;} p{-webkit-hypens:auto;-moz-hypens:auto;hyphens:auto;margin:10px 0;word-wrap: break-word;} blockquote{margin-left:1em;padding:10px 20px;margin:10px 0 20px 0;border-left:10px solid #ddd;background: #f6f6f6;} blockquote p{margin:0;} code{ padding: 2px 4px;color: #c7254e;background-color:#f9f2f4;border-radius: 4px; } pre{display:block;padding:0;overflow:auto;margin:0 0 10px;font-size:1em;line-height:1.42857143; word-break:break-all;word-wrap:break-word;color:#333;background:none;border-radius:4px} code,kbd,pre,samp{ font-family:Consolas,'Liberation Mono','Ubuntu Mono',Menlo,Courier,sans-serif; } pre code{background:#f8f8f8;color:#777;white-space:pre-wrap;padding:6px 1em;border:1px solid #eee;display: block;} a{color:#1980e6;text-decoration:none} a:hover{text-decoration:underline} a img{border:none} img{max-width: 100%;} h1 a,h1 a:hover{text-decoration:none} hr{border: 0 none;height: 4px;margin:1.2em 0; background: rgba(0, 0, 0, 0) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0; } @media screen and (min-width: 900px) { body {width: 900px;} } ul,ol{padding: 0.5em 0 0.5em 3em;} table {border-collapse: collapse;border-spacing: 0;margin-bottom: 20px;} table thead{background: #eee;} table td,table th{padding: .5em;border: 1px solid #ddd;line-height: 1.5;} .markdown-latex {text-align: center;margin-bottom: 1.5em;font-size:1.6em;color: #000;} .latex-inline .katex-display{display:inline-block;font-size: 0.8em;} .markdown_menu ul{padding:0 10px 20px 20px;} .markdown_menu li{ font-size:14px;list-style:none; line-height:1.8em;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; } .markdown_menu_h2{padding-left:2em;} .markdown_menu_h3{padding-left:4em;} .markdown_menu_h4{padding-left:6em;} .markdown_menu_h5{padding-left:8em;} .markdown_menu_h6{padding-left:10em;} div .hljs{color: #666;} .hljs-comment,.hljs-quote {color: #8e908c;} .hljs-variable,.hljs-template-variable,.hljs-tag,.hljs-name,.hljs-selector-id, .hljs-selector-class,.hljs-regexp,.hljs-deletion {color: #c82829;} .hljs-number,.hljs-built_in,.hljs-builtin-name,.hljs-literal,.hljs-type, .hljs-params,.hljs-meta,.hljs-link {color: #f5871f;} .hljs-attribute {color: #eab700;} .hljs-string,.hljs-symbol,.hljs-bullet,.hljs-addition {color: #718c00;} .hljs-title,.hljs-section {color: #4271ae;} .hljs-keyword,.hljs-selector-tag {color: #8959a8;} .hljs {display: block;overflow-x: auto;color: #4d4d4c;padding: 0.5em;} .hljs-emphasis {font-style: italic;} .hljs-strong {font-weight: bold;} /* black theme */ body.code_theme_black{background:#333;color:#bbb} body.code_theme_black blockquote{border-color:#444;border-color:rgba(200,200,200,.1);background:#444;background:rgba(200,200,200,.1)} body.code_theme_black code,body.code_theme_black pre,body.code_theme_black pre code{color:#777;border-color:#444;border-color:rgba(0,0,0,.1);background:#444;background:rgba(0,0,0,.1)} body.code_theme_black code{color:#C5AC18;background:#555;background:rgba(255,255,255,0.15);} body.code_theme_black a{color:orange} body.code_theme_black .h1,body.code_theme_black h1, body.code_theme_black .h2,body.code_theme_black h2, body.code_theme_black .h3,body.code_theme_black h3, body.code_theme_black .h4,body.code_theme_black h4, body.code_theme_black .h5,body.code_theme_black h5, body.code_theme_black .h6,body.code_theme_black h6{ color: #fff; } body.code_theme_black hr{border-bottom:solid 1px #444;border-color:rgba(200,200,200,.1);background-image:none;} body.code_theme_black table thead{background: #3e3e3e;} body.code_theme_black table td,body.code_theme_black table th{border-color:#444;border-color:rgba(200,200,200,.1)} body.code_theme_black .markdown-latex {color: #fff;} body.code_theme_black div .hljs{display:block;overflow-x:auto;padding:.5em;background:#23241f} body.code_theme_black .hljs,body.code_theme_black .hljs-subst,body.code_theme_black .hljs-tag{color:#f8f8f2} body.code_theme_black .hljs-emphasis,body.code_theme_black .hljs-strong{color:#a8a8a2} body.code_theme_black .hljs-bullet,body.code_theme_black .hljs-link,body.code_theme_black .hljs-literal,body.code_theme_black .hljs-number,body.code_theme_black .hljs-quote,body.code_theme_black .hljs-regexp{color:#ae81ff} body.code_theme_black .hljs-code,body.code_theme_black .hljs-section,body.code_theme_black .hljs-selector-class,body.code_theme_black .hljs-title{color:#a6e22e} body.code_theme_black .hljs-strong{font-weight:700} body.code_theme_black .hljs-emphasis{font-style:italic} body.code_theme_black .hljs-attr,body.code_theme_black .hljs-keyword,body.code_theme_black .hljs-name,body.code_theme_black .hljs-selector-tag{color:#f92672} body.code_theme_black .hljs-attribute,body.code_theme_black .hljs-symbol{color:#66d9ef} body.code_theme_black .hljs-class .hljs-title,body.code_theme_black .hljs-params{color:#f8f8f2} body.code_theme_black .hljs-addition,body.code_theme_black .hljs-built_in,body.code_theme_black .hljs-builtin-name,body.code_theme_black .hljs-selector-attr,body.code_theme_black .hljs-selector-id,body.code_theme_black .hljs-selector-pseudo,body.code_theme_black .hljs-string,body.code_theme_black .hljs-template-variable,body.code_theme_black .hljs-type,body.code_theme_black .hljs-variable{color:#e6db74} body.code_theme_black .hljs-comment,body.code_theme_black .hljs-deletion,body.code_theme_black .hljs-meta{color:#75715e} .print-btn{ position:absolute;padding:4px 20px;color:#444;font-size:1em; background:#eee;background:rgba(200,200,200,0.2);margin-top: -45px;right:15px; } .print-btn:hover{text-decoration: none;background: #14a2ff;color: #fff;} @media print { .print-btn{display: none;} } </style> <body > <a href="javascript:window.print();" class="print-btn">Print</a> <h1>kod前端开发文档</h1>
+<hr>
+<blockquote>
+<p>第三方库开相关</p>
+</blockquote>
+<pre><code class="hljs nginx"><span class="hljs-attribute">webuploader</span> http://fex.baidu.com/webuploader/doc/index.html
+artDialog   本地
+jquery      本地  
+seajs       http://seajs.org/docs/#docs
+artTemplate https://github.com/aui/artTemplate/#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95
+</code></pre>
+<p>调试方法:chrome——打开控制台——直接输入js代码调用</p>
+<h2>一、js部分树目录；</h2>
+<blockquote>
+<p>相关文件及其对应功能；由于lib为熟知的第三方库；在此暂不做说明</p>
+</blockquote>
+<pre><code class="hljs css">    <span class="hljs-selector-tag">js</span>部分树目录
+    ├─<span class="hljs-selector-tag">common</span>   (公共<span class="hljs-selector-tag">js</span>目录)        
+    │      <span class="hljs-selector-tag">CMPlayer</span><span class="hljs-selector-class">.js</span>      播放器封装：打开<span class="hljs-selector-tag">mp3</span>文件；视频文件对<span class="hljs-selector-tag">cmp4</span>插件的封装。
+    │      <span class="hljs-selector-tag">core</span><span class="hljs-selector-class">.js</span>          全局通用方法封装
+    │      <span class="hljs-selector-tag">pathOpen</span><span class="hljs-selector-class">.js</span>      文件打开统一处理<span class="hljs-selector-tag">Model</span> 直接负责<span class="hljs-selector-tag">ajax</span>请求接口处理;不负责界面相关信息；
+    │      <span class="hljs-selector-tag">pathOperate</span><span class="hljs-selector-class">.js</span>   文件操作统一处理：新建文件、重命名、删除、设置属性、压缩、解压等等。
+    │      <span class="hljs-selector-tag">rightMenu</span><span class="hljs-selector-class">.js</span>     右键菜单统一定义；以及点击后对应调用的控制
+    │      <span class="hljs-selector-tag">taskTap</span><span class="hljs-selector-class">.js</span>       任务栏多个<span class="hljs-selector-tag">tab</span>标签管理；添加、删除、最大化最小化等
+    │      <span class="hljs-selector-tag">tree</span><span class="hljs-selector-class">.js</span>          树目录统公共部分
+    ├─<span class="hljs-selector-tag">src</span>(各个模块的业务代码)
+    │  ├─<span class="hljs-selector-tag">app</span>(应用模块：列表、安装、编辑等等)
+    │  │      <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>
+    │  │      <span class="hljs-selector-tag">page</span><span class="hljs-selector-class">.js</span>
+    │  ├─<span class="hljs-selector-tag">desktop</span>(桌面业务代码)
+    │  │      <span class="hljs-selector-tag">fileSelect</span><span class="hljs-selector-class">.js</span>     选择、框选部分事件处理
+    │  │      <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>           入口、模块引入、通用定义等；
+    │  │      <span class="hljs-selector-tag">ui</span><span class="hljs-selector-class">.js</span>             界面初始化；与事件处理等
+    │  ├─<span class="hljs-selector-tag">edit</span>(编辑器模块)
+    │  │      <span class="hljs-selector-tag">edit</span><span class="hljs-selector-class">.js</span>           编辑器逻辑及事件处理
+    │  │      <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>           入口
+    │  │      <span class="hljs-selector-tag">mode</span><span class="hljs-selector-class">.js</span>           扩展名对应的高亮处理
+    │  │      <span class="hljs-selector-tag">taskTap</span><span class="hljs-selector-class">.js</span>        任务栏多个<span class="hljs-selector-tag">tab</span>标签管理
+    │  │      <span class="hljs-selector-tag">toolbar</span><span class="hljs-selector-class">.js</span>        编辑器工具栏控制及对应的功能实现
+    │  ├─<span class="hljs-selector-tag">editor</span>(文件编辑模块;文件树目录)  
+    │  │      <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>           入口
+    │  │      <span class="hljs-selector-tag">ui</span><span class="hljs-selector-class">.js</span>             主界面；树目录及右键相关绑定
+    │  ├─<span class="hljs-selector-tag">explorer</span>(文件管理模块)
+    │  │      <span class="hljs-selector-tag">fileSelect</span><span class="hljs-selector-class">.js</span>     选择、框选部分事件处理
+    │  │      <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>           入口、模块引入、通用定义等；
+    │  │      <span class="hljs-selector-tag">path</span><span class="hljs-selector-class">.js</span>           文件管理的集中控制；对<span class="hljs-selector-tag">core</span>中<span class="hljs-selector-tag">pathOpen</span>、<span class="hljs-selector-tag">pathPathOperate</span>的控制器
+    │  │      <span class="hljs-selector-tag">ui</span><span class="hljs-selector-class">.js</span>             界面初始化；与事件处理等
+    │  └─<span class="hljs-selector-tag">setting</span>(设置中心)
+    │          <span class="hljs-selector-tag">fav</span><span class="hljs-selector-class">.js</span>            收藏夹管理；增删改查
+    │          <span class="hljs-selector-tag">group</span><span class="hljs-selector-class">.js</span>          用户组管理、权限设置相关功能；包括界面处理以及数据调用
+    │          <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>           入口
+    │          <span class="hljs-selector-tag">member</span><span class="hljs-selector-class">.js</span>         用户管理；包括界面处理以及数据调用
+    │          <span class="hljs-selector-tag">setting</span><span class="hljs-selector-class">.js</span>        设置主界面控制
+    ├─<span class="hljs-selector-tag">tpl</span>(公用<span class="hljs-selector-tag">html</span>模板)
+    │      <span class="hljs-selector-tag">app</span><span class="hljs-selector-class">.js</span>               应用列表
+    │      <span class="hljs-selector-tag">fileinfo</span><span class="hljs-selector-class">.js</span>          文件、文件夹属性查看
+    │      <span class="hljs-selector-tag">search</span><span class="hljs-selector-class">.js</span>            搜索窗口以及搜索结果展示
+    │      <span class="hljs-selector-tag">upload</span><span class="hljs-selector-class">.js</span>            上传窗口
+    └─<span class="hljs-selector-tag">update</span>(自动升级检测模块)
+            <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>              (相关处理)
+</code></pre>
+<h2>二、关键部分说明</h2>
+<blockquote>
+<p>就文件管理及系统的关键部分做以说明</p>
+</blockquote>
+<pre><code class="hljs css">    文件管理模块
+    ├─<span class="hljs-selector-tag">common</span>   (公共<span class="hljs-selector-tag">js</span>目录)        
+    │      <span class="hljs-selector-tag">CMPlayer</span><span class="hljs-selector-class">.js</span>      播放器封装：打开<span class="hljs-selector-tag">mp3</span>文件；视频文件对<span class="hljs-selector-tag">cmp4</span>插件的封装。
+    │      <span class="hljs-selector-tag">core</span><span class="hljs-selector-class">.js</span>          全局通用方法封装
+    │      <span class="hljs-selector-tag">pathOpen</span><span class="hljs-selector-class">.js</span>      文件打开统一处理<span class="hljs-selector-tag">Model</span> 直接负责<span class="hljs-selector-tag">ajax</span>请求接口处理;不负责界面相关信息；
+    │      <span class="hljs-selector-tag">pathOperate</span><span class="hljs-selector-class">.js</span>   文件操作统一处理：新建文件、重命名、删除、设置属性、压缩、解压等等。
+    │      <span class="hljs-selector-tag">rightMenu</span><span class="hljs-selector-class">.js</span>     右键菜单统一定义；以及点击后对应调用的控制
+    │      <span class="hljs-selector-tag">taskTap</span><span class="hljs-selector-class">.js</span>       任务栏多个<span class="hljs-selector-tag">tab</span>标签管理；添加、删除、最大化最小化等
+    │      <span class="hljs-selector-tag">tree</span><span class="hljs-selector-class">.js</span>          树目录统公共部分
+    ├─<span class="hljs-selector-tag">src</span>(各个模块的业务代码)
+    │  ├─<span class="hljs-selector-tag">explorer</span>(文件管理模块)
+    │  │      <span class="hljs-selector-tag">fileSelect</span><span class="hljs-selector-class">.js</span>     选择、框选部分事件处理
+    │  │      <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>           入口、模块引入、通用定义等；
+    │  │      <span class="hljs-selector-tag">path</span><span class="hljs-selector-class">.js</span>           文件管理的集中控制；对<span class="hljs-selector-tag">core</span>中<span class="hljs-selector-tag">pathOpen</span>、<span class="hljs-selector-tag">pathPathOperate</span>的控制器
+    │  │      <span class="hljs-selector-tag">ui</span><span class="hljs-selector-class">.js</span>             界面初始化；与事件处理等
+</code></pre>
+<h3>1.全局变量G;储存通用配置以及公共数据</h3>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">//部分全局变量</span>
+G={
+    static_path: <span class="hljs-string">"./static/"</span>    <span class="hljs-comment">//静态文件加载路径                  </span>
+    this_path: <span class="hljs-string">"D:/WWW/"</span>        <span class="hljs-comment">//当前路径；路径切换时自动修改此变量</span>
+    app_host: <span class="hljs-string">"http://localhost/www/kod/dev/"</span>   <span class="hljs-comment">//host目录</span>
+    basic_path: <span class="hljs-string">"D:/WWW/www/kod/dev/"</span>           <span class="hljs-comment">//程序目录</span>
+    json_data:          
+
+
+    <span class="hljs-comment">//界面用户配置信息</span>
+    list_type: <span class="hljs-string">"icon"</span>
+    movietheme: <span class="hljs-string">"webplayer"</span>
+    musictheme: <span class="hljs-string">"mp3player"</span>
+    sort_field: <span class="hljs-string">"name"</span>
+    sort_order: <span class="hljs-string">"up"</span>
+}
+
+</code></pre>
+<h3>2. ui.js 成员及其说明；</h3>
+<blockquote>
+<p>ui.js 会返回一个全局的ui对象；ui的成员函数；在当前模块全局可用</p>
+</blockquote>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">//</span>
+f5: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">is_data_server,is_animate,callback</span>)   //刷新界面；从后台获取数据重新刷新当前文件列表；三个参数
+<span class="hljs-title">f5_callback</span>: <span class="hljs-title">function</span> (<span class="hljs-params">callback</span>)                    //带回调的直接刷新
+<span class="hljs-title">init</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)//初始化；界面初始化、快捷键绑定、各种事件绑定等
+<span class="hljs-title">isEdit</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)
+
+//用户配置修改；更改对应的界面显示；然后将配置通过<span class="hljs-title">ajax</span>保存到后台
+<span class="hljs-title">setListSort</span>: <span class="hljs-title">function</span> (<span class="hljs-params">field,order</span>)
+<span class="hljs-title">setListType</span>: <span class="hljs-title">function</span> (<span class="hljs-params">thistype,firstRun</span>)
+<span class="hljs-title">setStyle</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)//设置文件列表高宽。
+<span class="hljs-title">setTheme</span>: <span class="hljs-title">function</span> (<span class="hljs-params">thistheme</span>)
+
+//引入的对象
+<span class="hljs-title">header</span>: <span class="hljs-title">Object</span>  //地址栏统一处理    
+<span class="hljs-title">picasa</span>: <span class="hljs-title">Picasa</span>  //图片浏览控件对象
+
+<span class="hljs-title">tree</span>: <span class="hljs-title">Object</span>    //树目录统一封装
+<span class="hljs-title">path</span>: <span class="hljs-title">Object</span>    //文件各种操作统一封装
+<span class="hljs-title">pathOpen</span>: <span class="hljs-title">Object</span>//文件打开统一封装
+</span></code></pre>
+<h3>3. core.js 对应的成员函数</h3>
+<blockquote>
+<p>core.***</p>
+</blockquote>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">//参数为括号内定义</span>
+ico: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">type</span>)                        //
+<span class="hljs-title">filetype</span>: <span class="hljs-title">Object</span>        //文件类型定义；打开该文件时作为依据
+<span class="hljs-title">contextmenu</span>: <span class="hljs-title">function</span> (<span class="hljs-params">event</span>)               //右键菜单是否在<span class="hljs-title">input</span>、<span class="hljs-title">text</span>框通用判断
+<span class="hljs-title">pathThis</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>)   //当前文件名
+<span class="hljs-title">pathFather</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>) //父目录
+<span class="hljs-title">pathExt</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>)    //文件扩展名
+<span class="hljs-title">path2url</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>)   //路径转换到<span class="hljs-title">url</span>路径
+
+<span class="hljs-title">ajaxError</span>: <span class="hljs-title">function</span> (<span class="hljs-params">XMLHttpRequest, textStatus, errorThrown</span>)   <span class="hljs-title">ajax</span>请求错误返回集中处理
+<span class="hljs-title">setting</span>: <span class="hljs-title">function</span> (<span class="hljs-params">setting</span>)                 //打开设置
+<span class="hljs-title">appStore</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)                       //打开应用中心
+<span class="hljs-title">openApp</span>: <span class="hljs-title">function</span> (<span class="hljs-params">app</span>)                     //打开应用
+<span class="hljs-title">explorer</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path,title</span>)             //打开文件管理器窗口 <span class="hljs-title">eg</span>：<span class="hljs-title">core</span>.<span class="hljs-title">explorer</span>(<span class="hljs-params">'/self',''</span>)
+
+<span class="hljs-title">createFlash</span>: <span class="hljs-title">function</span> (<span class="hljs-params">swf,flashvars,id</span>)    //创建<span class="hljs-title">flash</span>
+<span class="hljs-title">editorFull</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)                     //编辑器全屏
+<span class="hljs-title">exitfullScreen</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)                 //退出全屏
+<span class="hljs-title">file_size</span>: <span class="hljs-title">function</span> (<span class="hljs-params">size</span>)                  //文件大小换算；<span class="hljs-title">byte</span>---<span class="hljs-title">KB</span>,<span class="hljs-title">MB</span>,<span class="hljs-title">GB</span>的计算
+<span class="hljs-title">fullScreen</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)                     //全屏
+<span class="hljs-title">tips</span>: <span class="hljs-title">Object</span>                                //提示消息控件;用法:<span class="hljs-title">core</span>.<span class="hljs-title">tips</span>.<span class="hljs-title">tips</span>(<span class="hljs-params">123</span>)
+
+//配置设置
+<span class="hljs-title">language</span>: <span class="hljs-title">function</span> (<span class="hljs-params">lang</span>)
+<span class="hljs-title">setSkin</span>: <span class="hljs-title">function</span> (<span class="hljs-params">theme,css</span>)
+
+//搜索
+<span class="hljs-title">search</span>: <span class="hljs-title">function</span> (<span class="hljs-params">search,path</span>)      
+
+//上传相关;
+<span class="hljs-title">upload</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)                 //打开上传框
+<span class="hljs-title">upload_init</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)            //上传初始化
+<span class="hljs-title">server_dwonload</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>)    //远程下载
+</span></code></pre>
+<h3>4. explorer/path.js 界面事件及功能控制中心</h3>
+<blockquote>
+<p>ui.path.***<br>
+文件管理的集中控制；直接调用open，play，remove等相当于直接操控当前选中```</p>
+</blockquote>
+<pre><code class="language-javascript hljs">
+<span class="hljs-comment">//对core中pathOpen、pathPathOperate的封装调用</span>
+appEdit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">create</span>)  //<span class="hljs-title">app</span>编辑
+<span class="hljs-title">appInstall</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.appInstall(_param().path);}  <span class="hljs-comment">//app安装</span>
+appList: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.appList(_param().path);}  <span class="hljs-comment">//app列表</span>
+back: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)       //后退操作
+<span class="hljs-title">clipboard</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)  //查看剪贴板
+<span class="hljs-title">copy</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.copy(_param(<span class="hljs-literal">true</span>));}  <span class="hljs-comment">//复制</span>
+copyDrag: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dragTo,isDragCurrent</span>)  //复制方式拖拽
+<span class="hljs-title">cute</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.cute(_param(<span class="hljs-literal">true</span>),ui.f5);}  <span class="hljs-comment">//剪切</span>
+cuteDrag: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dragTo</span>)</span>{pathOperate.cuteDrag(_param(<span class="hljs-literal">true</span>),dragTo,refreshCallback);}
+download: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{pathOpen.download(_param().path);}  <span class="hljs-comment">//下载</span>
+fav: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.fav(_param().path);}  <span class="hljs-comment">//添加到收藏夹</span>
+info: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.info(_param(<span class="hljs-literal">true</span>));}  <span class="hljs-comment">//文件、文件夹属性</span>
+list: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path,tips</span>)  //展示文件列表
+<span class="hljs-title">newFile</span>: <span class="hljs-title">function</span> (<span class="hljs-params">newname_ext</span>)   //新建文件
+<span class="hljs-title">newFolder</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)   //新建文件夹
+<span class="hljs-title">next</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{<span class="hljs-comment">//前进操作</span>
+open: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path</span>)  //打开
+<span class="hljs-title">openEditor</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{pathOpen.openEditor(_param().path);}  <span class="hljs-comment">//以编辑方式打开</span>
+openIE: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{pathOpen.openIE(_param().path);}  <span class="hljs-comment">//新窗口打开</span>
+past: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)  //粘贴
+<span class="hljs-title">pathOperate</span>: <span class="hljs-title">Object</span>  //文件操作<span class="hljs-title">model</span>对象
+<span class="hljs-title">play</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)  //播放文件
+<span class="hljs-title">remove</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.remove(_param(<span class="hljs-literal">true</span>),refreshCallback);fileLight.clear();}
+rname: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)   //重命名
+<span class="hljs-title">search</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{core.search(<span class="hljs-string">''</span>,_param().path);}  <span class="hljs-comment">//搜索指定文件夹</span>
+setSearchByStr: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ch</span>)   内部使用
+<span class="hljs-title">setSelectByChar</span>: <span class="hljs-title">function</span> (<span class="hljs-params">ch</span>) 
+<span class="hljs-title">setSelectByFilename</span>: <span class="hljs-title">function</span> (<span class="hljs-params">name</span>) 
+
+<span class="hljs-title">unZip</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.unZip(_param().path,ui.f5);}  <span class="hljs-comment">//解压</span>
+zip: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{pathOperate.zip(_param(<span class="hljs-literal">true</span>),refreshCallback);}  <span class="hljs-comment">//压缩</span>
+</code></pre>
+<h3>5. core/pathOperate.js 对应的成员函数</h3>
+<blockquote>
+<p>ui.path.pathOperate.***</p>
+</blockquote>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">//封装对具体业务调用的数据处理；</span>
+appAddURL: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url</span>)  //将<span class="hljs-title">url</span>处理成应用<span class="hljs-title">oexe</span>
+<span class="hljs-title">appEdit</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path,callback,action</span>)    //应用编辑保存
+<span class="hljs-title">appList</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)     //应用列表
+<span class="hljs-title">clipboard</span>: <span class="hljs-title">function</span> (<span class="hljs-params"></span>)   //剪贴板
+<span class="hljs-title">copy</span>: <span class="hljs-title">function</span> (<span class="hljs-params">param</span>)   //复制
+<span class="hljs-title">copyDrag</span>: <span class="hljs-title">function</span> (<span class="hljs-params">param,dragTo,callback</span>)   //复制方式拖拽移动
+<span class="hljs-title">cute</span>: <span class="hljs-title">function</span> (<span class="hljs-params">param</span>)   //剪切
+<span class="hljs-title">cuteDrag</span>: <span class="hljs-title">function</span> (<span class="hljs-params">param,dragTo,callback</span>)   //剪切方式拖拽
+<span class="hljs-title">fav</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>)     //添加到收藏夹
+<span class="hljs-title">info</span>: <span class="hljs-title">function</span> (<span class="hljs-params">param</span>)   //文档属性
+<span class="hljs-title">newFile</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path,callback</span>)   //新建文件
+<span class="hljs-title">newFolder</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path,callback</span>) //新建文件夹
+<span class="hljs-title">past</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path,callback</span>)      //粘贴
+<span class="hljs-title">remove</span>: <span class="hljs-title">function</span> (<span class="hljs-params">param,callback</span>)   //删除
+<span class="hljs-title">rname</span>: <span class="hljs-title">function</span> (<span class="hljs-params">from,to,callback</span>)  //重命名
+<span class="hljs-title">unZip</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path,callback</span>)     //解压缩
+<span class="hljs-title">zip</span>: <span class="hljs-title">function</span> (<span class="hljs-params">param,callback</span>)      //压缩
+</span></code></pre>
+<h3>6. core/pathOpen.js 对应的成员函数</h3>
+<blockquote>
+<p>ui.pathOpen.***</p>
+</blockquote>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">//封装对具体文件打开处理；</span>
+download: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path</span>)   //下载到本地
+<span class="hljs-title">open</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path,ext</span>)   //打开文件
+<span class="hljs-title">openEditor</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>)   //编辑文件
+<span class="hljs-title">openIE</span>: <span class="hljs-title">function</span> (<span class="hljs-params">path</span>)    //浏览器打开
+<span class="hljs-title">play</span>: <span class="hljs-title">function</span> (<span class="hljs-params">list,ext</span>)     //播放文件
+</span></code></pre>
+ </body> <html> 
